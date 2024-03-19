@@ -24,61 +24,13 @@
 .markdown-preview.markdown-preview p {
   text-align: justify;
 }
-.markdown-preview.markdown-preview .contenedor {
-  display: flex;
-  justify-content: center;
-  margin: 30px auto 30px auto;
-}
-.markdown-preview.markdown-preview .fondo {
-  background: url(https://programacioniesbalmis.github.io/Imagenes/BannersMoodle/banner.png);
-  background-size: cover;
-  width: 75%;
-  height: 160px;
-  border-radius: 10px;
-  position: relative;
-}
-.markdown-preview.markdown-preview .cita {
-  font-family: Arial;
-  font-style: italic;
-  font-weight: 600;
-  text-align: justify;
-  line-height: 1.5rem;
-  opacity: 0.6;
-  color: white;
-  padding: 5rem;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  font-size: 1.3rem;
-  transform: translate(-50%, -50%);
-}
-.markdown-preview.markdown-preview .abre_comilla {
-  font-family: "Catamaran";
-  font-weight: 600;
-  color: white;
-  padding-left: 30px;
-  position: absolute;
-  font-size: 6rem;
-  transform: translate(0%, -15%);
-}
-.markdown-preview.markdown-preview .cierra_comilla {
-  font-family: "Catamaran";
-  font-weight: 600;
-  color: white;
-  padding-right: 30px;
-  right: 0%;
-  position: absolute;
-  font-size: 6rem;
-  transform: translate(0%, 55%);
-}
-.markdown-preview.markdown-preview .autor {
-  font-family: Arial;
-  color: white;
-  margin: 0px;
-  padding-left: 30px;
-  position: absolute;
-  top: 83%;
-  font-size: 1rem;
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5,
+.markdown-preview.markdown-preview h6 {
+  color: blue;
 }
 
       </style>
@@ -257,9 +209,9 @@ El gran éxito es en parte por su sencillez, ya que el marco de trabajo Scrum no
 <p>El Product Backlog es una lista de todas los requerimientos que se deben realizar para completar el proyecto. El Product Owner (docente) es el responsable de mantener el Product Backlog actualizado y de priorizar los requerimientos  en función de su importancia. Es una lista <strong>dinámica</strong>, y se va actualizando a lo largo del proyecto.</p>
 <p>Será el primer paso en nuestro proyecto. El/la docente deberá definir las <strong>historias de usuario</strong> o requerimientos que se deben realizar para completar el proyecto.</p>
 <p>Una historia de usuario es una descripción de una funcionalidad que se debe implementar en el proyecto. Se escriben en un lenguaje sencillo y se centran en las necesidades. Por ejemplo, una historia de usuario podría ser: “Como usuario, quiero poder iniciar sesión en la aplicación para acceder a mi perfil”.</p>
-<blockquote>
+<div class="admonition note">
 <p>“Como [perfil], [quiero] [para].”</p>
-</blockquote>
+</div>
 <p>El/la docente, ejerciendo su papel de Product Owner, es la persona que debe priorizarlas.</p>
 <p>Este listado se irá actualizando a lo largo del proyecto, añadiendo nuevas historias, modificando las existentes, o eliminando aquellas que ya no sean necesarias.</p>
 <p>Cada historia de usuario puede tener:</p>

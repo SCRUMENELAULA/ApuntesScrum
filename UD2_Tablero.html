@@ -24,61 +24,13 @@
 .markdown-preview.markdown-preview p {
   text-align: justify;
 }
-.markdown-preview.markdown-preview .contenedor {
-  display: flex;
-  justify-content: center;
-  margin: 30px auto 30px auto;
-}
-.markdown-preview.markdown-preview .fondo {
-  background: url(https://programacioniesbalmis.github.io/Imagenes/BannersMoodle/banner.png);
-  background-size: cover;
-  width: 75%;
-  height: 160px;
-  border-radius: 10px;
-  position: relative;
-}
-.markdown-preview.markdown-preview .cita {
-  font-family: Arial;
-  font-style: italic;
-  font-weight: 600;
-  text-align: justify;
-  line-height: 1.5rem;
-  opacity: 0.6;
-  color: white;
-  padding: 5rem;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  font-size: 1.3rem;
-  transform: translate(-50%, -50%);
-}
-.markdown-preview.markdown-preview .abre_comilla {
-  font-family: "Catamaran";
-  font-weight: 600;
-  color: white;
-  padding-left: 30px;
-  position: absolute;
-  font-size: 6rem;
-  transform: translate(0%, -15%);
-}
-.markdown-preview.markdown-preview .cierra_comilla {
-  font-family: "Catamaran";
-  font-weight: 600;
-  color: white;
-  padding-right: 30px;
-  right: 0%;
-  position: absolute;
-  font-size: 6rem;
-  transform: translate(0%, 55%);
-}
-.markdown-preview.markdown-preview .autor {
-  font-family: Arial;
-  color: white;
-  margin: 0px;
-  padding-left: 30px;
-  position: absolute;
-  top: 83%;
-  font-size: 1rem;
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5,
+.markdown-preview.markdown-preview h6 {
+  color: green;
 }
 
       </style>
@@ -183,6 +135,9 @@
 <li>Lista de impedimentos (opcional)</li>
 </ul>
 <p>Se puede mostrar información cómo: puentos estimados, dependencias entre tareas, tiempos empleado, quién está trabajando en cada tarea, etc.</p>
+<blockquote>
+<p>En esta actividad además de trabajar la comunicación, resolución de conflictos y la toma de decisiones, aprenden a hacer estimaciones y favorece el pensamiento crítico. Este tablero nos ayuda a realizar una planificación, nos muestra donde se encuentra claramente el equipo, y sirve para que el docente tenga una visión clara de si el equipo lleva un buen camino para conseguir los resultados de aprendizaje y actuar en consecuencia. El docente repasa los tableros y cuando detecta algún problema o los alumnos se encallan en algún concepto difícil aprovecha para hacer la explicación a toda la clase. También revisa los post-it que está en la columna de DONE y pregunta a todos los miembros del equipo, asegurando que todo el grupo comprende todos los conceptos y que todos los miembros han colaborado en las tareas. De no ser así la tarjeta vuelve a la columna de DOING. Cada uno de los grupos sabe en qué punto está y en qué fecha debe estar todo hecho.</p>
+</blockquote>
 <p>Este tablero puede ser digital o físico, o ambos.</p>
 <p><strong>Tablero físico</strong></p>
 <p>El tablero físico es un tablero, donde se colocan tarjetas (post-its) con las tareas a realizar.<br>
@@ -198,7 +153,24 @@ La idea es ir moviendo post-its de una columna a otra, según el estado de la ta
 <h3 id="definición-de-divertido-más-utilizada-en-eduscrum">Definición de Divertido (más utilizada en eduScrum) </h3>
 <h3 id="product-backlog-o-listado-de-historias">Product Backlog o Listado de Historias </h3>
 <h4 id="historias-de-usuario">Historias de usuario </h4>
-<p>L</p>
+<p>Cada historia de usuario o requerimiento debe ir acompañado de sus <strong>criterios de aceptación</strong>. Los criterios de aceptación son una lista de condiciones que se deben cumplir para que la historia de usuario se considere terminada. Los criterios de aceptación se utilizan para asegurarse de que el equipo entiende lo que se espera de ellos.</p>
+<p>Por ejemplo, esta historia de usuario:<br>
+"Como usuario, quiero poder iniciar sesión en la aplicación para acceder a mi perfil"<br>
+Podría tener los siguientes criterios de aceptación:</p>
+<ul>
+<li>El usuario debe poder introducir su nombre de usuario y su contraseña.</li>
+<li>El usuario debe poder hacer clic en un botón para iniciar sesión.</li>
+<li>El usuario debe ser redirigido a su perfil después de iniciar sesión.</li>
+<li>El usuario debe ver un mensaje de error si introduce un nombre de usuario o una contraseña incorrectos.</li>
+</ul>
+<p>No hay que confundir los criterios de aceptación de cada tareas, con la <strong>Definición de Hecho</strong> ("Definition of Done") que se verá más adelante. La definición de hecho es la misma para todas las historias o requerimientos, y los criterios de aceptación son específicos de cada tarea.</p>
+<p>Ejemplo de definición de hecho:</p>
+<ul>
+<li>La tarea ha sido revisada y comprendida por todos los miembros del equipo.</li>
+<li>Cumple con los criterios de aceptación.</li>
+<li>Se ha documentado<br>
+TODO: producto mínimo viable</li>
+</ul>
 <h4 id="historias">Historias </h4>
 <h4 id="criterios-de-aceptación">Criterios de aceptación </h4>
 <h4 id="tareas">Tareas </h4>
