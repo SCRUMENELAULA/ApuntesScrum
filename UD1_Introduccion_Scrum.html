@@ -34,6 +34,45 @@ code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-fami
 .markdown-preview.markdown-preview h6 {
   color: blue;
 }
+.markdown-preview.markdown-preview .flotante {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+@media (max-width: 550px) {
+  .markdown-preview.markdown-preview .flotante {
+    flex-direction: column;
+  }
+}
+@media (min-width: 550px) {
+  .markdown-preview.markdown-preview .flotante {
+    flex-direction: row;
+  }
+}
+.markdown-preview.markdown-preview .flotante_izq {
+  margin-right: 15px;
+}
+@media (max-width: 550px) {
+  .markdown-preview.markdown-preview .flotante_izq {
+    width: 100%;
+  }
+}
+@media (min-width: 550px) {
+  .markdown-preview.markdown-preview .flotante_izq {
+    width: auto;
+  }
+}
+@media (max-width: 550px) {
+  .markdown-preview.markdown-preview .flotante_der {
+    width: 100%;
+  }
+}
+@media (min-width: 550px) {
+  .markdown-preview.markdown-preview .flotante_der {
+    width: auto;
+  }
+}
 
       </style>
       <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
@@ -112,15 +151,9 @@ code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-fami
 <p>Scrum es un marco que permite el <strong>trabajo colaborativo</strong> entre equipos. Al igual que un equipo de rugby (de donde proviene su nombre) cuando entrena para un gran partido, scrum anima a los equipos a aprender a través de las experiencias, a autoorganizarse mientras aborda un problema y a reflexionar sobre sus victorias y derrotas para mejorar continuamente.<br>
 Normalmente son los equipos de desarrollo de software los que utilizan con mayor frecuencia Scrum, pero sus principios y lecciones se pueden aplicar a todo tipo de proyectos en equipo.</p>
 <p>Scrum incluye un conjunto de reuniones, herramientas y funciones que, de forma coordinada, ayudan a los equipos a estructurar y gestionar su trabajo. El objetivo es obtener mejores resultados cada vez, dándole agilidad al equipo, que mejora con cada experiencia, y la adaptación al cambio, al ser un proceso iterativo.</p>
-<div class="container">
-<div class="col">
-Scrum fue creado por Jeff Sutherland y Ken Schwaber a principios de los años 90. Ambos estaban trabajando en el desarrollo de software y se dieron cuenta de que los métodos tradicionales de gestión de proyectos no eran efectivos. Así que se unieron para crear un marco de trabajo que permitiera a los equipos ser más ágiles y adaptarse a los cambios.
-El gran éxito es en parte por su sencillez, ya que el marco de trabajo Scrum nos da unas pequeñas pautas a seguir. Y cada uno puede llevarlas a cabo de una forma diferente y adaptarla a sus necesidades.
-</div>
-<div class="col">
-  <img src="images/rugby.png" alt="Scrum en rugby" style="width:100%; margin: 5px;"> 
-</div>
-</div>
+<p>Scrum fue creado por Jeff Sutherland y Ken Schwaber a principios de los años 90. Ambos estaban trabajando en el desarrollo de software y se dieron cuenta de que los métodos tradicionales de gestión de proyectos no eran efectivos. Así que se unieron para crear un marco de trabajo que permitiera a los equipos ser más ágiles y adaptarse a los cambios.</p>
+<img src="images/rugby.png" alt="Scrum en rugby" width="90%"> 
+<p>El gran éxito es en parte por su sencillez, ya que el marco de trabajo Scrum nos da unas pequeñas pautas a seguir. Y cada uno puede llevarlas a cabo de una forma diferente y adaptarla a sus necesidades.</p>
 <div class="admonition question">
 <p class="admonition-title">Reflexión</p>
 <p>Al tratarse de trabajo en equipo, ¿consideráis que debemos dedicar tiempo a ver las ventajas de trabajar en equipo? ¿qué hace falta para que el alumnado trabaje bien en equipo?</p>
@@ -240,7 +273,7 @@ El gran éxito es en parte por su sencillez, ya que el marco de trabajo Scrum no
 ¿Qué vamos a acabar en este Sprint? Es el <strong>objetivo del Sprint</strong>. El Product Owner debe explicar qué es lo que se espera que se entregue al final del Sprint, y priorizar lo que es más importante.</p>
 <p>El equipo de desarrollo, junto con el Product Owner, selecciona los requerimientos del Product Backlog más prioritarias que considera va a poder realizar en el Sprint, y se planifica cómo se van a realizar. Debe estar claro que día va a finalizar el Sprint, y NO se debe modificar.</p>
 <p>Para ver cuántas tareas se pueden realizar en un Sprint, hace falta saber cuántas personas hay en el equipo y cuánto tiempo se va a trabajar en el Sprint, si a tiempo completo, al 20% o al 50%.</p>
-<p>El Scrum Master debe asegurarse de que el equipo entiende lo que se espera de ellos y de que tienen todo lo que necesitan para completar el trabajo. Debe asegurarse de que todo el equipo sale de la reunión sabiendo cuáles son las tareas que se deben realizar en el Sprint. Se pueden asignar que tareas va a realizar cada uno en esta reunión, pero no es necesario. Lo que si se debe hacer es estimar el esfuerzo que va a suponer cada tarea. Esto se puede hacer con la técnica de <strong>Poker Plan</strong>, que veremos más adelante.</p>
+<p>El Scrum Master debe asegurarse de que el equipo entiende lo que se espera de ellos y de que tienen todo lo que necesitan para completar el trabajo. Debe asegurarse de que todo el equipo sale de la reunión sabiendo cuáles son las tareas que se deben realizar en el Sprint. Se pueden asignar que tareas va a realizar cada uno en esta reunión, pero no es necesario. Lo que si se debe hacer es estimar el esfuerzo que va a suponer cada tarea. Esto se puede hacer con la técnica de <strong>Planning Poker</strong>, que veremos más adelante.</p>
 <p>El Product Owner debe resolver preferiblemente en este momento las dudas que surjan sobre las tareas que se van a realizar.</p>
 <p>Para que la planificación del Sprint sea efectiva, es importante desglosar las tareas en tareas más pequeñas, que se puedan realizar en un día, o máximo dos. También es importante saber si hay condicionantes, es decir, si para empezar una tarea debe estar terminada otra. Esto lo puede indicar el Product Owner, o lo puede indicar el equipo de desarrollo.</p>
 <div class="admonition question">
@@ -287,6 +320,8 @@ Es responsabilidad del Scrum Master que no se pase de ese tiempo.</p>
 <p>Se puede tener una lista con todas las tareas finalizadas. Es el Product Owner quien se encarga de mantenerla actualizada, y decidir si se da por terminada una tarea o no.</p>
 <h3 id="retrospectiva-del-sprint-sprint-retrospective">Retrospectiva del Sprint (Sprint Retrospective) </h3>
 <p>El objetivo es autoevaluar la forma de trabajar. Se habla de la forma en la que el equipo ha actuado, de cómo ha afrontado los problemas, y de cómo debería haberlos afrontado.</p>
+<p>Se autoevalua a nivel individual y a nivel equipo. Y de esta autoevaluación debe salir un plan de mejora, a aplicar en el siguiente Sprint. Con ello el alumnado adquiere un crecimiento personal y profesional, trabajando la mejora continua, y siendo más consciente de sus virtudes y de sus puntos de mejora.</p>
+<p>A esto a menudo se le denomina en el mundo laboral <strong>PDCA</strong> (Plan, Do, Check, Act). Son iteraciones en las que se planifica, se ejecuta, se chequea, y se actúa en consecuencia.</p>
 <p>Es altamente recomendable hacerlo después de cada Sprint, pero no es obligatorio cuando se hacen Sprint de una semana y nos falta tiempo. Se puede hacer después de varios Sprints, pero no es recomendable hacerlo después de más de 3 Sprints.</p>
 
       </div>
