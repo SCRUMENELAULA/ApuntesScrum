@@ -93,7 +93,11 @@ code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-fami
 </a>
           </summary>
         <div>
-          <details style="padding:0;;padding-left:24px;" open="">
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#creando-los-equipos" class="md-toc-link">
+            <p>Creando los equipos</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
           <a href="#creando-el-tablero" class="md-toc-link"><p>Creando el Tablero</p>
 </a>
@@ -121,8 +125,8 @@ code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-fami
         </div>
       </details>
     <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#definición-de-hecho" class="md-toc-link">
-            <p>Definición de Hecho</p>
+          <a href="#definición-de-hecho-o-terminado" class="md-toc-link">
+            <p>Definición de Hecho o Terminado</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#estimación-planning-poker" class="md-toc-link">
@@ -152,9 +156,31 @@ code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-fami
 <p><a href="./UD2_Tablero.pdf">Descargar estos apuntes</a></p>
 <div style="page-break-after:always;"></div>
 <h1 id="trabajando-con-scrum-en-el-aula-1">Trabajando con Scrum en el aula </h1>
-<p>Para llevar Scrum al aula, necesitamos ciertos materiales o herramientas, siendo la más importante la gestión del tablero.</p>
+<h2 id="creando-los-equipos">Creando los equipos </h2>
+<p>Lo primero que debemos hacer para trabajar con Scrum es crear los equipos. Para ello podemos utilizar distintas herramientas.</p>
+<ul>
+<li>Al azar, utilizando por ejemplo <a href="https://echaloasuerte.com/">https://echaloasuerte.com/</a></li>
+<li>Metodología DISC: es un enfoque para entender y clasificar los diferentes tipos de comportamientos humanos, según cuatro dimensiones clave: Dominancia, Influencia, Estabilidad y Cumplimiento</li>
+<li>Mediante selección de cualidades o habilidades: se puede sortear o elegir a capitanes/as de los equipos y, por turnos, estos capitanes/as van eligiendo las fichas anónimas con las cualidades que el alumnado ha marcado de una plantilla que le proporcionamos parecida a esta:<br>
+<img src="images/equipos_cualidades.png"></li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Reflexión</p>
+<p>¿Qué método emplearías y por qué?¿Crees que por sorteo es un buen método?</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Actividad</p>
+<p>Crear los equipos con el método que prefiráis.</p>
+</div>
 <h2 id="creando-el-tablero">Creando el Tablero </h2>
+<div class="flotante" ,="" style="align-items: center;">
+<div class="flotante_izq">
 <p>Lo primero que necesitamos para llevar Scrum al aula, son los tableros. Cada equipo de alumnos/as debe tener un tablero <strong>visible a todo el equipo</strong>, donde se refleje el estado de las tareas en tarjetas o post-its que se se mueven de una columna a otra, según el estado de la tarea. Los estados habituales son: Por hacer, En proceso, Hecho. Pero se recomienda añadir los que se consideren necesarios, por ejemplo, en validación, puesto en común, etc.</p>
+</div>
+<div class="flotante_der">
+    <img height="200px" src="images/tablero_scrum.jpg">
+</div>
+</div>
 <p>Podremos tener además en el tablero los siguientes elementos:</p>
 <ul>
 <li>Logo y nombre del equipo.</li>
@@ -180,10 +206,6 @@ code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-fami
 <p>Otra idea puede ser poner una primera fila con atascos/retrasos, de manera que si es tablero digital sea la primera en ver. Si resolver ese retraso o atasco depende de otra persona, ponemos la tarjeta con el color de esa persona, por ejemplo, del color del Product Owner o del Scrum Master.</p>
 <p>Si hay tareas que tengan dependencias de otras, o requerimientos que dependan de otros, es mejor poner las que haya que hacer antes arriba.</p>
 <p>En el caso de que estuvieran trabajando con múltiples proyectos, al tenerlo separado por requerimientos, siempre y cuando hayamos definido el mismo tiempo de Sprint y acordado con otros docentes usar las mismas normas, se podría tener el mismo tablero para múltiples proyectos.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Conclusión</p>
-<p>El tablero nos muestra donde se encuentra claramente el equipo, y sirve para que el profesorado tenga una visión clara de si el equipo lleva un buen camino para conseguir los resultados de aprendizaje y actuar en consecuencia. El profesorado  repasa los tableros y cuando detecta algún problema o el alumnado se encalla en algún concepto difícil aprovecha para hacer la explicación a toda la clase.</p>
 </div>
 <p>Este tablero puede ser digital o físico, o ambos.</p>
 <p><strong>Tablero físico</strong></p>
@@ -231,23 +253,25 @@ Podría tener los siguientes criterios de aceptación:</p>
 <li>El usuario debe ser redirigido a su perfil después de iniciar sesión.</li>
 <li>El usuario debe ver un mensaje de error si introduce un nombre de usuario o una contraseña incorrectos.</li>
 </ul>
-<h3 id="definición-de-hecho">Definición de Hecho </h3>
+<h3 id="definición-de-hecho-o-terminado">Definición de Hecho o Terminado </h3>
 <div class="admonition question">
 <p class="admonition-title">"Reflexión"</p>
-<p>¿Cuántas veces os ha pasado a nivel profesional o en casa que os han dicho que se había hecho algo y no estaba terminado?</p>
+<p>¿Cuántas veces os ha pasado a nivel profesional o personal que os han dicho que se había hecho algo y no estaba terminado?</p>
 </div>
-<p>La definición de hecho es la misma para todas las historias o requerimientos, y los criterios de aceptación son específicos de cada tarea.</p>
+<p>La <strong>Definición de Terminado</strong> es la misma para todas las historias o requerimientos, y los criterios de aceptación son específicos de cada tarea.</p>
 <p>Ejemplo de definición de hecho:</p>
 <ul>
 <li>La tarea ha sido revisada y comprendida por todos los miembros del equipo.</li>
 <li>Cumple con los criterios de aceptación.</li>
-<li>Se ha documentado.</li>
+<li>Se ha documentado correctamente.</li>
+<li>Ha sido probada</li>
+<li>....</li>
 </ul>
 <p>Siempre pondremos en la definición de hecho, que se cumplan todos los criterios de aceptación.</p>
 <p>Esta definición nos sirve para ver que se debe cumplir para poner una tarea en la columna de Hecho o Done. Una vez ahí la tarea, se entiende que ya no hay que realizar nada más con ella.</p>
 <div class="admonition note">
 <p class="admonition-title">Actividad</p>
-<p>Realizamos el tablero de cada equipo, incluyendo en el Product Backlog todo lo que nos aporte información o nos resulte de utilidad. Es importante poner aquello que potencia la pertenencia al equipo, y mejora la convivencia y el compromiso.</p>
+<p>Realizamos el tablero de cada equipo, incluyendo en el Product Backlog todo lo que nos aporte información o nos resulte de utilidad. Se deben definir las columnas de estados y subestados que necesitemos. Es importante poner aquello que potencia la pertenencia al equipo, y mejora la convivencia y el compromiso.</p>
 </div>
 <h3 id="estimación-planning-poker">Estimación: Planning Poker </h3>
 <p>Planning Poker es una técnica que se utiliza para realizar estimaciones de esfuerzo.</p>
@@ -310,20 +334,44 @@ Realizamos un gráfico poniendo en el eje vertical el total de pesos, y en el ej
 <p>¿Cómo debemos leer e interpretar el tablero?¿Qué conclusiones extraéis de los siguientes tableros?</p>
 </div>
 <p><strong>Ejemplo 1</strong></p>
+<div class="flotante" ,="" style="align-items: center;">
+<div class="flotante_izq">
+<p>En este tablero podemos ver que hay muchas tareas en una columna en particular. En esta caso nos está avisando que en la tarea de validación se quedan atascadas las tareas. Hay que ver cuál es la causa y buscar soluciones.</p>
+</div>
+<div class="flotante_der">
+    <img height="200px" src="images/tableros/atasco_columna.png">
+</div>
+</div>
 <p><strong>Ejemplo 2</strong></p>
-<p><strong>Ejemplo 4</strong></p>
-<div class="admonition question">
-<p class="admonition-title">Reflexión</p>
-<p>¿Qué hacemos si queda poco para la <em>Revisión</em> y tenemos muchas tareas por terminar?</p>
+<div class="flotante" ,="" style="align-items: center;">
+<div class="flotante_izq">
+<p>En este tablero podemos ver que hay una persona que tiene muchas tareas asignadas, la verde. Si son 4 personas en el equipo, hay 2 que no tienen ninguna tarea.</p>
+</div>
+<div class="flotante_der">
+    <img height="200px" src="images/tableros/mucho_una_persona.png">
+</div>
+</div>
+<p><strong>Ejemplo 3</strong></p>
+<div class="flotante" ,="" style="align-items: center;">
+<div class="flotante_izq">
+<p>En este tablero podemos ver que hay muchas tareas en curso, sin terminar. Esto se debe evitar, ya que el hacer muchas cosas a la vez no es productivo. Hay que minimizar el trabajo en curso (WIP: Work in Progres ).</p>
+</div>
+<div class="flotante_der">
+    <img height="200px" src="images/tableros/demasiado_wip.png">
+</div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Conclusiones</p>
 <p>El tablero debe trabajarse <strong>de derecha a izquierda</strong>, "tirando" desde la columna <em>Done</em> o <em>Terminado</em>, intentando mover las tarjetas que tiene en la columna previa. Una vez cerradas las tarjetas que estaban en la columna anterior, intentamos pasar a esta las tareas de la columna anterior. Y así sucesivamente.<br>
 No se trata de ir quitando columnas del <em>To Do</em> o <em>Por hacer</em>.</p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Conclusión</p>
+<p>El tablero nos muestra donde se encuentra claramente el equipo, y sirve para que el profesorado tenga una visión clara de si el equipo lleva un buen camino para conseguir los resultados de aprendizaje y actuar en consecuencia. El profesorado  repasa los tableros y cuando detecta algún problema o el alumnado se encalla en algún concepto difícil aprovecha para hacer la explicación a toda la clase.</p>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Reflexión</p>
-<p>¿Y una vez acabado el Sprint que hacemos con los requerimientos o las tareas que no se han terminado?</p>
+<p>¿Qué hacemos si queda poco para la <em>Revisión</em> y tenemos muchas tareas por terminar?</p>
 </div>
 
       </div>
