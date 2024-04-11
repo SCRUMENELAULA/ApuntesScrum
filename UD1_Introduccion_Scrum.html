@@ -1,1574 +1,348 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Introducción a Scrum</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-
-
-
-
-
-  <style>
-    @import url(https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css);
-
-    code[class*=language-],
-    pre[class*=language-] {
-      color: #333;
-      background: 0 0;
-      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-      text-align: left;
-      white-space: pre;
-      word-spacing: normal;
-      word-break: normal;
-      word-wrap: normal;
-      line-height: 1.4;
-      -moz-tab-size: 8;
-      -o-tab-size: 8;
-      tab-size: 8;
-      -webkit-hyphens: none;
-      -moz-hyphens: none;
-      -ms-hyphens: none;
-      hyphens: none
-    }
-
-    pre[class*=language-] {
-      padding: .8em;
-      overflow: auto;
-      border-radius: 3px;
-      background: #f5f5f5
-    }
-
-    :not(pre)>code[class*=language-] {
-      padding: .1em;
-      border-radius: .3em;
-      white-space: normal;
-      background: #f5f5f5
-    }
-
-    .token.blockquote,
-    .token.comment {
-      color: #969896
-    }
-
-    .token.cdata {
-      color: #183691
-    }
-
-    .token.doctype,
-    .token.macro.property,
-    .token.punctuation,
-    .token.variable {
-      color: #333
-    }
-
-    .token.builtin,
-    .token.important,
-    .token.keyword,
-    .token.operator,
-    .token.rule {
-      color: #a71d5d
-    }
-
-    .token.attr-value,
-    .token.regex,
-    .token.string,
-    .token.url {
-      color: #183691
-    }
-
-    .token.atrule,
-    .token.boolean,
-    .token.code,
-    .token.command,
-    .token.constant,
-    .token.entity,
-    .token.number,
-    .token.property,
-    .token.symbol {
-      color: #0086b3
-    }
-
-    .token.prolog,
-    .token.selector,
-    .token.tag {
-      color: #63a35c
-    }
-
-    .token.attr-name,
-    .token.class,
-    .token.class-name,
-    .token.function,
-    .token.id,
-    .token.namespace,
-    .token.pseudo-class,
-    .token.pseudo-element,
-    .token.url-reference .token.variable {
-      color: #795da3
-    }
-
-    .token.entity {
-      cursor: help
-    }
-
-    .token.title,
-    .token.title .token.punctuation {
-      font-weight: 700;
-      color: #1d3e81
-    }
-
-    .token.list {
-      color: #ed6a43
-    }
-
-    .token.inserted {
-      background-color: #eaffea;
-      color: #55a532
-    }
-
-    .token.deleted {
-      background-color: #ffecec;
-      color: #bd2c00
-    }
-
-    .token.bold {
-      font-weight: 700
-    }
-
-    .token.italic {
-      font-style: italic
-    }
-
-    .language-json .token.property {
-      color: #183691
-    }
-
-    .language-markup .token.tag .token.punctuation {
-      color: #333
-    }
-
-    .language-css .token.function,
-    code.language-css {
-      color: #0086b3
-    }
-
-    .language-yaml .token.atrule {
-      color: #63a35c
-    }
-
-    code.language-yaml {
-      color: #183691
-    }
-
-    .language-ruby .token.function {
-      color: #333
-    }
-
-    .language-markdown .token.url {
-      color: #795da3
-    }
-
-    .language-makefile .token.symbol {
-      color: #795da3
-    }
-
-    .language-makefile .token.variable {
-      color: #183691
-    }
-
-    .language-makefile .token.builtin {
-      color: #0086b3
-    }
-
-    .language-bash .token.keyword {
-      color: #0086b3
-    }
-
-    pre[data-line] {
-      position: relative;
-      padding: 1em 0 1em 3em
-    }
-
-    pre[data-line] .line-highlight-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: transparent;
-      display: block;
-      width: 100%
-    }
-
-    pre[data-line] .line-highlight {
-      position: absolute;
-      left: 0;
-      right: 0;
-      padding: inherit 0;
-      margin-top: 1em;
-      background: hsla(24, 20%, 50%, .08);
-      background: linear-gradient(to right, hsla(24, 20%, 50%, .1) 70%, hsla(24, 20%, 50%, 0));
-      pointer-events: none;
-      line-height: inherit;
-      white-space: pre
-    }
-
-    pre[data-line] .line-highlight:before,
-    pre[data-line] .line-highlight[data-end]:after {
-      content: attr(data-start);
-      position: absolute;
-      top: .4em;
-      left: .6em;
-      min-width: 1em;
-      padding: 0 .5em;
-      background-color: hsla(24, 20%, 50%, .4);
-      color: #f4f1ef;
-      font: bold 65%/1.5 sans-serif;
-      text-align: center;
-      vertical-align: .3em;
-      border-radius: 999px;
-      text-shadow: none;
-      box-shadow: 0 1px #fff
-    }
-
-    pre[data-line] .line-highlight[data-end]:after {
-      content: attr(data-end);
-      top: auto;
-      bottom: .4em
-    }
-
-    html body {
-      font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #333;
-      background-color: #fff;
-      overflow: initial;
-      box-sizing: border-box;
-      word-wrap: break-word
-    }
-
-    html body>:first-child {
-      margin-top: 0
-    }
-
-    html body h1,
-    html body h2,
-    html body h3,
-    html body h4,
-    html body h5,
-    html body h6 {
-      line-height: 1.2;
-      margin-top: 1em;
-      margin-bottom: 16px;
-      color: #000
-    }
-
-    html body h1 {
-      font-size: 2.25em;
-      font-weight: 300;
-      padding-bottom: .3em
-    }
-
-    html body h2 {
-      font-size: 1.75em;
-      font-weight: 400;
-      padding-bottom: .3em
-    }
-
-    html body h3 {
-      font-size: 1.5em;
-      font-weight: 500
-    }
-
-    html body h4 {
-      font-size: 1.25em;
-      font-weight: 600
-    }
-
-    html body h5 {
-      font-size: 1.1em;
-      font-weight: 600
-    }
-
-    html body h6 {
-      font-size: 1em;
-      font-weight: 600
-    }
-
-    html body h1,
-    html body h2,
-    html body h3,
-    html body h4,
-    html body h5 {
-      font-weight: 600
-    }
-
-    html body h5 {
-      font-size: 1em
-    }
-
-    html body h6 {
-      color: #5c5c5c
-    }
-
-    html body strong {
-      color: #000
-    }
-
-    html body del {
-      color: #5c5c5c
-    }
-
-    html body a:not([href]) {
-      color: inherit;
-      text-decoration: none
-    }
-
-    html body a {
-      color: #08c;
-      text-decoration: none
-    }
-
-    html body a:hover {
-      color: #00a3f5;
-      text-decoration: none
-    }
-
-    html body img {
-      max-width: 100%
-    }
-
-    html body>p {
-      margin-top: 0;
-      margin-bottom: 16px;
-      word-wrap: break-word
-    }
-
-    html body>ol,
-    html body>ul {
-      margin-bottom: 16px
-    }
-
-    html body ol,
-    html body ul {
-      padding-left: 2em
-    }
-
-    html body ol.no-list,
-    html body ul.no-list {
-      padding: 0;
-      list-style-type: none
-    }
-
-    html body ol ol,
-    html body ol ul,
-    html body ul ol,
-    html body ul ul {
-      margin-top: 0;
-      margin-bottom: 0
-    }
-
-    html body li {
-      margin-bottom: 0
-    }
-
-    html body li.task-list-item {
-      list-style: none
-    }
-
-    html body li>p {
-      margin-top: 0;
-      margin-bottom: 0
-    }
-
-    html body .task-list-item-checkbox {
-      margin: 0 .2em .25em -1.8em;
-      vertical-align: middle
-    }
-
-    html body .task-list-item-checkbox:hover {
-      cursor: pointer
-    }
-
-    html body blockquote {
-      margin: 16px 0;
-      font-size: inherit;
-      padding: 0 15px;
-      color: #5c5c5c;
-      background-color: #f0f0f0;
-      border-left: 4px solid #d6d6d6
-    }
-
-    html body blockquote>:first-child {
-      margin-top: 0
-    }
-
-    html body blockquote>:last-child {
-      margin-bottom: 0
-    }
-
-    html body hr {
-      height: 4px;
-      margin: 32px 0;
-      background-color: #d6d6d6;
-      border: 0 none
-    }
-
-    html body table {
-      margin: 10px 0 15px 0;
-      border-collapse: collapse;
-      border-spacing: 0;
-      display: block;
-      width: 100%;
-      overflow: auto;
-      word-break: normal;
-      word-break: keep-all
-    }
-
-    html body table th {
-      font-weight: 700;
-      color: #000
-    }
-
-    html body table td,
-    html body table th {
-      border: 1px solid #d6d6d6;
-      padding: 6px 13px
-    }
-
-    html body dl {
-      padding: 0
-    }
-
-    html body dl dt {
-      padding: 0;
-      margin-top: 16px;
-      font-size: 1em;
-      font-style: italic;
-      font-weight: 700
-    }
-
-    html body dl dd {
-      padding: 0 16px;
-      margin-bottom: 16px
-    }
-
-    html body code {
-      font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-      font-size: .85em;
-      color: #000;
-      background-color: #f0f0f0;
-      border-radius: 3px;
-      padding: .2em 0
-    }
-
-    html body code::after,
-    html body code::before {
-      letter-spacing: -.2em;
-      content: '\00a0'
-    }
-
-    html body pre>code {
-      padding: 0;
-      margin: 0;
-      word-break: normal;
-      white-space: pre;
-      background: 0 0;
-      border: 0
-    }
-
-    html body .highlight {
-      margin-bottom: 16px
-    }
-
-    html body .highlight pre,
-    html body pre {
-      padding: 1em;
-      overflow: auto;
-      line-height: 1.45;
-      border: #d6d6d6;
-      border-radius: 3px
-    }
-
-    html body .highlight pre {
-      margin-bottom: 0;
-      word-break: normal
-    }
-
-    html body pre code,
-    html body pre tt {
-      display: inline;
-      max-width: initial;
-      padding: 0;
-      margin: 0;
-      overflow: initial;
-      line-height: inherit;
-      word-wrap: normal;
-      background-color: transparent;
-      border: 0
-    }
-
-    html body pre code:after,
-    html body pre code:before,
-    html body pre tt:after,
-    html body pre tt:before {
-      content: normal
-    }
-
-    html body blockquote,
-    html body dl,
-    html body ol,
-    html body p,
-    html body pre,
-    html body ul {
-      margin-top: 0;
-      margin-bottom: 16px
-    }
-
-    html body kbd {
-      color: #000;
-      border: 1px solid #d6d6d6;
-      border-bottom: 2px solid #c7c7c7;
-      padding: 2px 4px;
-      background-color: #f0f0f0;
-      border-radius: 3px
-    }
-
-    @media print {
-      html body {
-        background-color: #fff
-      }
-
-      html body h1,
-      html body h2,
-      html body h3,
-      html body h4,
-      html body h5,
-      html body h6 {
-        color: #000;
-        page-break-after: avoid
-      }
-
-      html body blockquote {
-        color: #5c5c5c
-      }
-
-      html body pre {
-        page-break-inside: avoid
-      }
-
-      html body table {
-        display: table
-      }
-
-      html body img {
-        display: block;
-        max-width: 100%;
-        max-height: 100%
-      }
-
-      html body code,
-      html body pre {
-        word-wrap: break-word;
-        white-space: pre
-      }
-    }
-
-    .markdown-preview {
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box
-    }
-
-    .markdown-preview ul {
-      list-style: disc
-    }
-
-    .markdown-preview ul ul {
-      list-style: circle
-    }
-
-    .markdown-preview ul ul ul {
-      list-style: square
-    }
-
-    .markdown-preview ol {
-      list-style: decimal
-    }
-
-    .markdown-preview ol ol,
-    .markdown-preview ul ol {
-      list-style-type: lower-roman
-    }
-
-    .markdown-preview ol ol ol,
-    .markdown-preview ol ul ol,
-    .markdown-preview ul ol ol,
-    .markdown-preview ul ul ol {
-      list-style-type: lower-alpha
-    }
-
-    .markdown-preview .newpage,
-    .markdown-preview .pagebreak {
-      page-break-before: always
-    }
-
-    .markdown-preview pre.line-numbers {
-      position: relative;
-      padding-left: 3.8em;
-      counter-reset: linenumber
-    }
-
-    .markdown-preview pre.line-numbers>code {
-      position: relative
-    }
-
-    .markdown-preview pre.line-numbers .line-numbers-rows {
-      position: absolute;
-      pointer-events: none;
-      top: 1em;
-      font-size: 100%;
-      left: 0;
-      width: 3em;
-      letter-spacing: -1px;
-      border-right: 1px solid #999;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none
-    }
-
-    .markdown-preview pre.line-numbers .line-numbers-rows>span {
-      pointer-events: none;
-      display: block;
-      counter-increment: linenumber
-    }
-
-    .markdown-preview pre.line-numbers .line-numbers-rows>span:before {
-      content: counter(linenumber);
-      color: #999;
-      display: block;
-      padding-right: .8em;
-      text-align: right
-    }
-
-    .markdown-preview .mathjax-exps .MathJax_Display {
-      text-align: center !important
-    }
-
-    .markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group {
-      display: none
-    }
-
-    .markdown-preview:not([data-for=preview]) .code-chunk .status {
-      display: none
-    }
-
-    .markdown-preview:not([data-for=preview]) .code-chunk .output-div {
-      margin-bottom: 16px
-    }
-
-    .markdown-preview .md-toc {
-      padding: 0
-    }
-
-    .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link {
-      display: inline;
-      padding: .25rem 0
-    }
-
-    .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,
-    .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p {
-      display: inline
-    }
-
-    .markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link {
-      font-weight: 800
-    }
-
-    .scrollbar-style::-webkit-scrollbar {
-      width: 8px
-    }
-
-    .scrollbar-style::-webkit-scrollbar-track {
-      border-radius: 10px;
-      background-color: transparent
-    }
-
-    .scrollbar-style::-webkit-scrollbar-thumb {
-      border-radius: 5px;
-      background-color: rgba(150, 150, 150, .66);
-      border: 4px solid rgba(150, 150, 150, .66);
-      background-clip: content-box
-    }
-
-    html body[for=html-export]:not([data-presentation-mode]) {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      margin: 0;
-      padding: 0;
-      overflow: auto
-    }
-
-    html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
-      position: relative;
-      top: 0;
-      min-height: 100vh
-    }
-
-    @media screen and (min-width:914px) {
-      html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
-        padding: 2em calc(50% - 457px + 2em)
-      }
-    }
-
-    @media screen and (max-width:914px) {
-      html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
-        padding: 2em
-      }
-    }
-
-    @media screen and (max-width:450px) {
-      html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
-        font-size: 14px !important;
-        padding: 1em
-      }
-    }
-
-    @media print {
-      html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn {
-        display: none
-      }
-    }
-
-    html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn {
-      position: fixed;
-      bottom: 8px;
-      left: 8px;
-      font-size: 28px;
-      cursor: pointer;
-      color: inherit;
-      z-index: 99;
-      width: 32px;
-      text-align: center;
-      opacity: .4
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn {
-      opacity: 1
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 300px;
-      height: 100%;
-      padding: 32px 0 48px 0;
-      font-size: 14px;
-      box-shadow: 0 0 4px rgba(150, 150, 150, .33);
-      box-sizing: border-box;
-      overflow: auto;
-      background-color: inherit
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar {
-      width: 8px
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track {
-      border-radius: 10px;
-      background-color: transparent
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb {
-      border-radius: 5px;
-      background-color: rgba(150, 150, 150, .66);
-      border: 4px solid rgba(150, 150, 150, .66);
-      background-clip: content-box
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a {
-      text-decoration: none
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc {
-      padding: 0 16px
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link {
-      display: inline;
-      padding: .25rem 0
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p {
-      display: inline
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link {
-      font-weight: 800
-    }
-
-    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
-      left: 300px;
-      width: calc(100% - 300px);
-      padding: 2em calc(50% - 457px - 300px / 2);
-      margin: 0;
-      box-sizing: border-box
-    }
-
-    @media screen and (max-width:1274px) {
-      html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
-        padding: 2em
-      }
-    }
-
-    @media screen and (max-width:450px) {
-      html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
-        width: 100%
-      }
-    }
-
-    html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview {
-      left: 50%;
-      transform: translateX(-50%)
-    }
-
-    html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc {
-      display: none
-    }
-
-    @font-face {
-      font-family: "Material Icons";
-      font-style: normal;
-      font-weight: 400;
-      src: local("Material Icons"), local("MaterialIcons-Regular"), url("data:application/x-font-woff;charset=utf-8;base64,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") format("woff")
-    }
-
-    .admonition {
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
-      position: relative;
-      margin: 1.5625em 0;
-      padding: 0 1.2rem;
-      border-left: .4rem solid rgba(68, 138, 255, .8);
-      border-radius: .2rem;
-      background-color: rgba(255, 255, 255, .05);
-      overflow: auto
-    }
-
-    .admonition>p {
-      margin-top: .8rem
-    }
-
-    .admonition>.admonition-title {
-      margin: 0 -1.2rem;
-      padding: .8rem 1.2rem .8rem 3.6rem;
-      border-bottom: 1px solid rgba(68, 138, 255, .2);
-      background-color: rgba(68, 138, 255, .1);
-      font-weight: 700
-    }
-
-    .admonition>.admonition-title:before {
-      position: absolute;
-      left: 1.2rem;
-      font-size: 1.5rem;
-      color: rgba(68, 138, 255, .8);
-      content: "\E3C9"
-    }
-
-    .admonition>.admonition-title:before {
-      font-family: Material Icons;
-      font-style: normal;
-      font-variant: normal;
-      font-weight: 400;
-      line-height: 2rem;
-      text-transform: none;
-      white-space: nowrap;
-      speak: none;
-      word-wrap: normal;
-      direction: ltr
-    }
-
-    .admonition.abstract,
-    .admonition.summary,
-    .admonition.tldr {
-      border-left-color: rgba(0, 176, 255, .8)
-    }
-
-    .admonition.abstract>.admonition-title,
-    .admonition.summary>.admonition-title,
-    .admonition.tldr>.admonition-title {
-      background-color: rgba(0, 176, 255, .1);
-      border-bottom-color: rgba(0, 176, 255, .2)
-    }
-
-    .admonition.abstract>.admonition-title:before,
-    .admonition.summary>.admonition-title:before,
-    .admonition.tldr>.admonition-title:before {
-      color: #00b0ff;
-      content: "\E8D2"
-    }
-
-    .admonition.hint,
-    .admonition.tip {
-      border-left-color: rgba(0, 191, 165, .8)
-    }
-
-    .admonition.hint>.admonition-title,
-    .admonition.tip>.admonition-title {
-      background-color: rgba(0, 191, 165, .1);
-      border-bottom-color: rgba(0, 191, 165, .2)
-    }
-
-    .admonition.hint>.admonition-title:before,
-    .admonition.tip>.admonition-title:before {
-      color: #00bfa5;
-      content: "\E80E"
-    }
-
-    .admonition.info,
-    .admonition.todo {
-      border-left-color: rgba(0, 184, 212, .8)
-    }
-
-    .admonition.info>.admonition-title,
-    .admonition.todo>.admonition-title {
-      background-color: rgba(0, 184, 212, .1);
-      border-bottom-color: rgba(0, 184, 212, .2)
-    }
-
-    .admonition.info>.admonition-title:before,
-    .admonition.todo>.admonition-title:before {
-      color: #00b8d4;
-      content: "\E88E"
-    }
-
-    .admonition.check,
-    .admonition.done,
-    .admonition.success {
-      border-left-color: rgba(0, 200, 83, .8)
-    }
-
-    .admonition.check>.admonition-title,
-    .admonition.done>.admonition-title,
-    .admonition.success>.admonition-title {
-      background-color: rgba(0, 200, 83, .1);
-      border-bottom-color: rgba(0, 200, 83, .2)
-    }
-
-    .admonition.check>.admonition-title:before,
-    .admonition.done>.admonition-title:before,
-    .admonition.success>.admonition-title:before {
-      color: #00c853;
-      content: "\E876"
-    }
-
-    .admonition.faq,
-    .admonition.help,
-    .admonition.question {
-      border-left-color: rgba(100, 221, 23, .8)
-    }
-
-    .admonition.faq>.admonition-title,
-    .admonition.help>.admonition-title,
-    .admonition.question>.admonition-title {
-      background-color: rgba(100, 221, 23, .1);
-      border-bottom-color: rgba(100, 221, 23, .2)
-    }
-
-    .admonition.faq>.admonition-title:before,
-    .admonition.help>.admonition-title:before,
-    .admonition.question>.admonition-title:before {
-      color: #64dd17;
-      content: "\E887"
-    }
-
-    .admonition.attention,
-    .admonition.caution,
-    .admonition.warning {
-      border-left-color: rgba(255, 145, 0, .8)
-    }
-
-    .admonition.attention>.admonition-title,
-    .admonition.caution>.admonition-title,
-    .admonition.warning>.admonition-title {
-      background-color: rgba(255, 145, 0, .1);
-      border-bottom-color: rgba(255, 145, 0, .2)
-    }
-
-    .admonition.attention>.admonition-title:before {
-      color: #ff9100;
-      content: "\E417"
-    }
-
-    .admonition.caution>.admonition-title:before,
-    .admonition.warning>.admonition-title:before {
-      color: #ff9100;
-      content: "\E002"
-    }
-
-    .admonition.fail,
-    .admonition.failure,
-    .admonition.missing {
-      border-left-color: rgba(255, 82, 82, .8)
-    }
-
-    .admonition.fail>.admonition-title,
-    .admonition.failure>.admonition-title,
-    .admonition.missing>.admonition-title {
-      background-color: rgba(255, 82, 82, .1);
-      border-bottom-color: rgba(255, 82, 82, .2)
-    }
-
-    .admonition.fail>.admonition-title:before,
-    .admonition.failure>.admonition-title:before,
-    .admonition.missing>.admonition-title:before {
-      color: #ff5252;
-      content: "\E14C"
-    }
-
-    .admonition.bug,
-    .admonition.danger,
-    .admonition.error {
-      border-left-color: rgba(255, 23, 68, .8)
-    }
-
-    .admonition.bug>.admonition-title,
-    .admonition.danger>.admonition-title,
-    .admonition.error>.admonition-title {
-      background-color: rgba(255, 23, 68, .1);
-      border-bottom-color: rgba(255, 23, 68, .2)
-    }
-
-    .admonition.danger>.admonition-title:before {
-      color: #ff1744;
-      content: "\E3E7"
-    }
-
-    .admonition.error>.admonition-title:before {
-      color: #ff1744;
-      content: "\E14C"
-    }
-
-    .admonition.bug>.admonition-title:before {
-      color: #ff1744;
-      content: "\E868"
-    }
-
-    .admonition.example,
-    .admonition.snippet {
-      border-left-color: rgba(0, 184, 212, .8)
-    }
-
-    .admonition.example>.admonition-title,
-    .admonition.snippet>.admonition-title {
-      background-color: rgba(0, 184, 212, .1);
-      border-bottom-color: rgba(0, 184, 212, .2)
-    }
-
-    .admonition.example>.admonition-title:before,
-    .admonition.snippet>.admonition-title:before {
-      color: #00b8d4;
-      content: "\E242"
-    }
-
-    .admonition.cite,
-    .admonition.quote {
-      border-left-color: rgba(158, 158, 158, .8)
-    }
-
-    .admonition.cite>.admonition-title,
-    .admonition.quote>.admonition-title {
-      background-color: rgba(158, 158, 158, .1);
-      border-bottom-color: rgba(158, 158, 158, .2)
-    }
-
-    .admonition.cite>.admonition-title:before,
-    .admonition.quote>.admonition-title:before {
-      color: #9e9e9e;
-      content: "\E244"
-    }
-
-    /* Please visit the URL below for more information: */
-    /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
-    /* Please visit the URL below for more information: */
-    /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
-
-    @font-face {
-      font-family: 'Catamaran';
-      font-style: normal;
-      font-weight: 400;
-      src: url(https://fonts.gstatic.com/s/catamaran/v19/o-0bIpQoyXQa2RxT7-5B6Ryxs2E_6n1iPHjd5a7dvg.ttf) format('truetype');
-    }
-
-    .markdown-preview.markdown-preview p {
-      text-align: justify;
-    }
-
-    .markdown-preview.markdown-preview h1,
-    .markdown-preview.markdown-preview h2,
-    .markdown-preview.markdown-preview h3,
-    .markdown-preview.markdown-preview h4,
-    .markdown-preview.markdown-preview h5,
-    .markdown-preview.markdown-preview h6 {
-      color: blue;
-    }
-
-    .markdown-preview.markdown-preview .flotante {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
-
-    @media (max-width: 550px) {
-      .markdown-preview.markdown-preview .flotante {
-        flex-direction: column;
-      }
-    }
-
-    @media (min-width: 550px) {
-      .markdown-preview.markdown-preview .flotante {
-        flex-direction: row;
-      }
-    }
-
-    .markdown-preview.markdown-preview .flotante_izq {
-      margin-right: 15px;
-    }
-
-    @media (max-width: 550px) {
-      .markdown-preview.markdown-preview .flotante_izq {
-        width: 100%;
-      }
-    }
-
-    @media (min-width: 550px) {
-      .markdown-preview.markdown-preview .flotante_izq {
-        width: auto;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .markdown-preview.markdown-preview .flotante_der {
-        width: 100%;
-      }
-    }
-
-    @media (min-width: 550px) {
-      .markdown-preview.markdown-preview .flotante_der {
-        width: auto;
-      }
-    }
-  </style>
-  <!-- The content below will be included at the end of the <head> element. -->
-  <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-      // your code here
-    });
-  </script>
-</head>
-
-<body for="html-export">
-
-
-  <div class="crossnote markdown-preview  ">
-
-    <h1 id="introducción-a-scrum">Introducción a Scrum </h1>
-
-    <div class="md-toc">
-      <details style="padding:0;;padding-left:0px;" open="">
+<!DOCTYPE html><html><head>
+      <title>Introducción a Scrum</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      @import url(https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css);
+code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("data:application/x-font-woff;charset=utf-8;base64,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") format("woff")}.admonition{box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12),0 3px 1px -2px rgba(0,0,0,.2);position:relative;margin:1.5625em 0;padding:0 1.2rem;border-left:.4rem solid rgba(68,138,255,.8);border-radius:.2rem;background-color:rgba(255,255,255,.05);overflow:auto}.admonition>p{margin-top:.8rem}.admonition>.admonition-title{margin:0 -1.2rem;padding:.8rem 1.2rem .8rem 3.6rem;border-bottom:1px solid rgba(68,138,255,.2);background-color:rgba(68,138,255,.1);font-weight:700}.admonition>.admonition-title:before{position:absolute;left:1.2rem;font-size:1.5rem;color:rgba(68,138,255,.8);content:"\E3C9"}.admonition>.admonition-title:before{font-family:Material Icons;font-style:normal;font-variant:normal;font-weight:400;line-height:2rem;text-transform:none;white-space:nowrap;speak:none;word-wrap:normal;direction:ltr}.admonition.abstract,.admonition.summary,.admonition.tldr{border-left-color:rgba(0,176,255,.8)}.admonition.abstract>.admonition-title,.admonition.summary>.admonition-title,.admonition.tldr>.admonition-title{background-color:rgba(0,176,255,.1);border-bottom-color:rgba(0,176,255,.2)}.admonition.abstract>.admonition-title:before,.admonition.summary>.admonition-title:before,.admonition.tldr>.admonition-title:before{color:#00b0ff;content:"\E8D2"}.admonition.hint,.admonition.tip{border-left-color:rgba(0,191,165,.8)}.admonition.hint>.admonition-title,.admonition.tip>.admonition-title{background-color:rgba(0,191,165,.1);border-bottom-color:rgba(0,191,165,.2)}.admonition.hint>.admonition-title:before,.admonition.tip>.admonition-title:before{color:#00bfa5;content:"\E80E"}.admonition.info,.admonition.todo{border-left-color:rgba(0,184,212,.8)}.admonition.info>.admonition-title,.admonition.todo>.admonition-title{background-color:rgba(0,184,212,.1);border-bottom-color:rgba(0,184,212,.2)}.admonition.info>.admonition-title:before,.admonition.todo>.admonition-title:before{color:#00b8d4;content:"\E88E"}.admonition.check,.admonition.done,.admonition.success{border-left-color:rgba(0,200,83,.8)}.admonition.check>.admonition-title,.admonition.done>.admonition-title,.admonition.success>.admonition-title{background-color:rgba(0,200,83,.1);border-bottom-color:rgba(0,200,83,.2)}.admonition.check>.admonition-title:before,.admonition.done>.admonition-title:before,.admonition.success>.admonition-title:before{color:#00c853;content:"\E876"}.admonition.faq,.admonition.help,.admonition.question{border-left-color:rgba(100,221,23,.8)}.admonition.faq>.admonition-title,.admonition.help>.admonition-title,.admonition.question>.admonition-title{background-color:rgba(100,221,23,.1);border-bottom-color:rgba(100,221,23,.2)}.admonition.faq>.admonition-title:before,.admonition.help>.admonition-title:before,.admonition.question>.admonition-title:before{color:#64dd17;content:"\E887"}.admonition.attention,.admonition.caution,.admonition.warning{border-left-color:rgba(255,145,0,.8)}.admonition.attention>.admonition-title,.admonition.caution>.admonition-title,.admonition.warning>.admonition-title{background-color:rgba(255,145,0,.1);border-bottom-color:rgba(255,145,0,.2)}.admonition.attention>.admonition-title:before{color:#ff9100;content:"\E417"}.admonition.caution>.admonition-title:before,.admonition.warning>.admonition-title:before{color:#ff9100;content:"\E002"}.admonition.fail,.admonition.failure,.admonition.missing{border-left-color:rgba(255,82,82,.8)}.admonition.fail>.admonition-title,.admonition.failure>.admonition-title,.admonition.missing>.admonition-title{background-color:rgba(255,82,82,.1);border-bottom-color:rgba(255,82,82,.2)}.admonition.fail>.admonition-title:before,.admonition.failure>.admonition-title:before,.admonition.missing>.admonition-title:before{color:#ff5252;content:"\E14C"}.admonition.bug,.admonition.danger,.admonition.error{border-left-color:rgba(255,23,68,.8)}.admonition.bug>.admonition-title,.admonition.danger>.admonition-title,.admonition.error>.admonition-title{background-color:rgba(255,23,68,.1);border-bottom-color:rgba(255,23,68,.2)}.admonition.danger>.admonition-title:before{color:#ff1744;content:"\E3E7"}.admonition.error>.admonition-title:before{color:#ff1744;content:"\E14C"}.admonition.bug>.admonition-title:before{color:#ff1744;content:"\E868"}.admonition.example,.admonition.snippet{border-left-color:rgba(0,184,212,.8)}.admonition.example>.admonition-title,.admonition.snippet>.admonition-title{background-color:rgba(0,184,212,.1);border-bottom-color:rgba(0,184,212,.2)}.admonition.example>.admonition-title:before,.admonition.snippet>.admonition-title:before{color:#00b8d4;content:"\E242"}.admonition.cite,.admonition.quote{border-left-color:rgba(158,158,158,.8)}.admonition.cite>.admonition-title,.admonition.quote>.admonition-title{background-color:rgba(158,158,158,.1);border-bottom-color:rgba(158,158,158,.2)}.admonition.cite>.admonition-title:before,.admonition.quote>.admonition-title:before{color:#9e9e9e;content:"\E244"}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+@font-face {
+  font-family: 'Catamaran';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/catamaran/v19/o-0bIpQoyXQa2RxT7-5B6Ryxs2E_6n1iPHjd5a7dvg.ttf) format('truetype');
+}
+.markdown-preview.markdown-preview p {
+  text-align: justify;
+}
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5,
+.markdown-preview.markdown-preview h6 {
+  color: blue;
+}
+.markdown-preview.markdown-preview .flotante {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+@media (max-width: 550px) {
+  .markdown-preview.markdown-preview .flotante {
+    flex-direction: column;
+  }
+}
+@media (min-width: 550px) {
+  .markdown-preview.markdown-preview .flotante {
+    flex-direction: row;
+  }
+}
+.markdown-preview.markdown-preview .flotante_izq {
+  margin-right: 15px;
+}
+@media (max-width: 550px) {
+  .markdown-preview.markdown-preview .flotante_izq {
+    width: 100%;
+  }
+}
+@media (min-width: 550px) {
+  .markdown-preview.markdown-preview .flotante_izq {
+    width: auto;
+  }
+}
+@media (max-width: 550px) {
+  .markdown-preview.markdown-preview .flotante_der {
+    width: 100%;
+  }
+}
+@media (min-width: 550px) {
+  .markdown-preview.markdown-preview .flotante_der {
+    width: auto;
+  }
+}
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="introducción-a-scrum">Introducción a Scrum </h1>
+
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#introducción-a-scrum-1" class="md-toc-link">
-            <p>Introducción a Scrum</p>
-          </a>
-        </summary>
+          <a href="#introducción-a-scrum-1" class="md-toc-link"><p>Introducción a Scrum</p>
+</a>
+          </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-            <a href="#qué-es-scrum" class="md-toc-link">
-              <p>¿Qué es Scrum?</p>
+          <a href="#qué-es-scrum" class="md-toc-link">
+            <p>¿Qué es Scrum?</p>
 
-            </a>
-          </div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-            <a href="#principios-ágiles" class="md-toc-link">
-              <p>Principios ágiles</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#principios-ágiles" class="md-toc-link">
+            <p>Principios ágiles</p>
 
-            </a>
-          </div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-            <a href="#pilares-de-scrum" class="md-toc-link">
-              <p>Pilares de Scrum</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#pilares-de-scrum" class="md-toc-link">
+            <p>Pilares de Scrum</p>
 
-            </a>
-          </div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-            <a href="#porqué-emplear-scrum-en-el-aula" class="md-toc-link">
-              <p>¿Porqué emplear Scrum en el Aula?</p>
-
-            </a>
-          </div>
+          </a></div>
         </div>
       </details>
-      <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-        <a href="#roles-en-scrum" class="md-toc-link">
-          <p>Roles en Scrum</p>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#roles-en-scrum" class="md-toc-link">
+            <p>Roles en Scrum</p>
 
-        </a>
-      </div>
-      <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-        <a href="#planificación-y-ejecución-de-sprints" class="md-toc-link">
-          <p>Planificación y Ejecución de Sprints</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#planificación-y-ejecución-de-sprints" class="md-toc-link">
+            <p>Planificación y Ejecución de Sprints</p>
 
-        </a>
-      </div>
-      <details style="padding:0;;padding-left:0px;" open="">
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#reuniones-de-scrum" class="md-toc-link">
-            <p>Reuniones de Scrum</p>
-          </a>
-        </summary>
+          <a href="#reuniones-de-scrum" class="md-toc-link"><p>Reuniones de Scrum</p>
+</a>
+          </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-            <a href="#reunión-diaria-daily-scrum" class="md-toc-link">
-              <p>Reunión diaria (Daily Scrum)</p>
+          <a href="#reunión-diaria-daily-scrum" class="md-toc-link">
+            <p>Reunión diaria (Daily Scrum)</p>
 
-            </a>
-          </div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-            <a href="#revisión-del-sprint-sprint-review" class="md-toc-link">
-              <p>Revisión del Sprint (Sprint Review)</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#revisión-del-sprint-sprint-review" class="md-toc-link">
+            <p>Revisión del Sprint (Sprint Review)</p>
 
-            </a>
-          </div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-            <a href="#retrospectiva-del-sprint-sprint-retrospective" class="md-toc-link">
-              <p>Retrospectiva del Sprint (Sprint Retrospective)</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#retrospectiva-del-sprint-sprint-retrospective" class="md-toc-link">
+            <p>Retrospectiva del Sprint (Sprint Retrospective)</p>
 
-            </a>
-          </div>
+          </a></div>
         </div>
       </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#para-qué-emplear-scrum-en-el-aula" class="md-toc-link">
+            <p>¿Para qué emplear Scrum en el Aula?</p>
 
-    </div>
-    <br>
-    <p><a href="./UD1_Introduccion_Scrum.pdf">Descargar estos apuntes</a></p>
-    <div style="page-break-after:always;"></div>
-    <h2 id="introducción-a-scrum-1">Introducción a Scrum </h2>
-    <h3 id="qué-es-scrum">¿Qué es Scrum? </h3>
-    <p>Scrum es un marco que permite el <strong>trabajo colaborativo</strong> entre equipos. Al igual que un equipo de
-      rugby (de donde proviene su nombre) cuando entrena para un gran partido, scrum anima a los equipos a aprender a
-      través de las experiencias, a autoorganizarse mientras aborda un problema y a reflexionar sobre sus victorias y
-      derrotas para mejorar continuamente.<br>
-      Normalmente son los equipos de desarrollo de software los que utilizan con mayor frecuencia Scrum, pero sus
-      principios y lecciones se pueden aplicar a todo tipo de proyectos en equipo.</p>
-    <p>Scrum incluye un conjunto de reuniones, herramientas y funciones que, de forma coordinada, ayudan a los equipos a
-      estructurar y gestionar su trabajo. El objetivo es obtener mejores resultados cada vez, dándole agilidad al
-      equipo, que mejora con cada experiencia, y la adaptación al cambio, al ser un proceso iterativo.</p>
-    <p>Scrum fue creado por Jeff Sutherland y Ken Schwaber a principios de los años 90. Ambos estaban trabajando en el
-      desarrollo de software y se dieron cuenta de que los métodos tradicionales de gestión de proyectos no eran
-      efectivos. Así que se unieron para crear un marco de trabajo que permitiera a los equipos ser más ágiles y
-      adaptarse a los cambios.</p>
-    <img src="images/rugby.png" alt="Scrum en rugby" width="90%">
-    <p>El gran éxito es en parte por su sencillez, ya que el marco de trabajo Scrum nos da unas pequeñas pautas a
-      seguir. Y cada uno puede llevarlas a cabo de una forma diferente y adaptarla a sus necesidades.</p>
-    <div class="admonition question">
-      <p class="admonition-title">Reflexión</p>
-      <p>Al tratarse de trabajo en equipo, ¿consideráis que debemos dedicar tiempo a ver las ventajas de trabajar en
-        equipo? ¿qué hace falta para que el alumnado trabaje bien en equipo?</p>
-    </div>
-    <h3 id="principios-ágiles">Principios ágiles </h3>
-    <p>Hoy en día definimos la filosofía <strong>Agile</strong> como la capacidad de crear y responder al cambio de
-      forma rápida, es una forma de llevar a cabo un proyecto de forma exitosa en un entorno incierto y en constantes
-      cambios (Agile Alliance, 2015).</p>
-    <p>Los principios ágiles son un conjunto de valores y principios que se utilizan para guiar el desarrollo de
-      software.</p>
-    <p>Los principios ágiles se basan en el <strong>Manifiesto Ágil</strong>, que fue escrito por un grupo de
-      desarrolladores de software en 2001. El manifiesto ágil establece <strong>cuatro valores</strong> fundamentales y
-      <strong>doce principios</strong> que se utilizan para guiar el desarrollo de software.</p>
-    <div class="admonition info">
-      <p class="admonition-title">Valores</p>
-      <p>Los cuatro valores fundamentales del manifiesto ágil son:</p>
-      <ul>
-        <li>
-          <p><strong>Individuos e interacciones sobre procesos y herramientas</strong>: Los equipos ágiles valoran más a
-            las <strong>personas y las relaciones</strong> entre ellas que a los procesos y las herramientas. Esto
-            significa que los equipos ágiles se centran en la <strong>comunicación y la colaboración</strong> entre los
-            miembros del equipo, en lugar de en los procesos y las herramientas que utilizan.</p>
-        </li>
-        <li>
-          <p><strong>Software funcionando sobre documentación extensiva</strong>: Los equipos ágiles valoran más el
-            software que funciona que la documentación extensiva. Esto significa que los equipos ágiles se centran en
-            crear software que funcione y que sea útil para los usuarios, en lugar de en crear una gran cantidad de
-            documentación.</p>
-        </li>
-        <li>
-          <p><strong>Colaboración con el cliente sobre negociación contractual</strong>: Los equipos ágiles valoran más
-            la colaboración con el cliente que la negociación contractual. Esto significa que los equipos ágiles
-            trabajan en <strong>estrecha colaboración</strong> con los clientes para entender sus necesidades y crear
-            software que satisfaga esas necesidades, en lugar de centrarse en la negociación de contratos.</p>
-        </li>
-        <li>
-          <p><strong>Responder al cambio sobre seguir un plan</strong>: Los equipos ágiles valoran más la capacidad de
-            responder al cambio que seguir un plan. Esto significa que los equipos ágiles se centran en <strong>ser
-              flexibles y adaptarse a los cambios</strong> en lugar de seguir un plan rígido.</p>
-        </li>
-      </ul>
-    </div>
-    <p>De estos valores surgen los <strong>doce principios</strong> del manifiesto ágil.</p>
-    <p>Para realizarlos de forma más genérica y aplicado a nuestro contexto educativo, los planteo adaptado al contexto
-      general, y no solo al desarrollo de software:</p>
-    <ol>
-      <li>La prioridad es satisfacer al cliente (docente) a través de la <strong>entrega temprana y continua con
-          valor</strong>.</li>
-      <li>Aceptamos que los <strong>requisitos cambien</strong>.</li>
-      <li><strong>Entregamos frecuentemente</strong>, cuanto más frecuente mejor. Más retroalimentación y más frecuente.
-      </li>
-      <li>Los responsables de negocio (docentes) y los desarrolladores (alumnado) trabajamos juntos <em><strong>de forma
-            cotidiana durante todo el proyecto</strong></em>. Todas las personas implicadas tiene los <strong>mismos
-          objetivos</strong> e interactúan dia a dia.</li>
-      <li>Los proyectos se desarrollan en torno a <em><strong>individuos motivados</strong></em>. Hay que darles el
-        entorno y el <strong>apoyo</strong> que necesitan, y <strong>confiarles la ejecución del trabajo</strong>.</li>
-      <li>El método más eficiente y efectivo de <strong>comunicar</strong> la información es <strong>cara a
-          cara</strong>, o por lo menos síncrona.</li>
-      <li>El <strong>producto que funciona</strong> es la medida principal del progreso. Esto hace referencia el
-        profesorado conozca el trabajo realizado y funcionando (o que se adapte a los esperado).</li>
-      <li>Los procesos ágiles promueven el desarrollo sostenible. Debemos ser capaces de mantener un <strong>ritmo
-          constante</strong> que pueda ser seguido por todos.</li>
-      <li>La atención continua a la <strong>excelencia técnica</strong> y al <strong>buen diseño</strong> mejora la
-        agilidad. Este se refiere a cuidar los aspectos a la hora de realizar el trabajo.</li>
-      <li>La <strong>simplicidad</strong>, o el arte de maximizar la cantidad de trabajo no realizado, es esencial. Se
-        refiere a actuar de la forma más sencilla posible. Acciones que realmente aporten valor. No realizar trabajo
-        innecesario.</li>
-      <li>Las mejores soluciones emergen de <strong>equipos autoorganizados</strong>. Se les da la
-        <strong>libertad</strong> para que tomen decisiones, y esto les hace estar más comprometidos y consiguen mejores
-        resultados.</li>
-      <li>A <strong>intervalos regulares</strong> el equipo <strong>reflexiona</strong> sobre cómo ser más efectivo para
-        a continuación ajustar y perfeccionar su comportamiento en consecuencia. hace referencia a la idea de la mejora
-        continua y aprender de los errores.</li>
-    </ol>
-    <h3 id="pilares-de-scrum">Pilares de Scrum </h3>
-    <p>Scrum se basa en tres pilares fundamentales que son la transparencia, la inspección y la adaptación.</p>
-    <ul>
-      <li><strong>Transparencia</strong>: Todos los aspectos del proceso deben ser visibles para todos los miembros del
-        equipo. Esto significa que el equipo debe ser honesto y abierto acerca de su trabajo y de los problemas que
-        puedan surgir.</li>
-      <li><strong>Inspección</strong>: El equipo debe inspeccionar regularmente su trabajo para identificar posibles
-        problemas y oportunidades de mejora.</li>
-      <li><strong>Adaptación</strong>: El equipo debe adaptarse a los cambios en su entorno y en su trabajo. Esto
-        significa que el equipo debe ser flexible y estar dispuesto a cambiar su forma de trabajar si es necesario.</li>
-    </ul>
-    <h3 id="porqué-emplear-scrum-en-el-aula">¿Porqué emplear Scrum en el Aula? </h3>
-    <p>Scrum por tanto se basa en realizar iteraciones cortas en las que se realizan entregas, llamadas
-      <strong>Sprints</strong>, en las que se planifica, se ejecuta con equipos autoorganizados y se revisa el trabajo
-      realizado buscando la mejora continua.</p>
-    <ol>
-      <li><strong>Fomenta la autonomía y la responsabilidad</strong>. El alumnado se organiza y planifica su trabajo,
-        asume responsabilidades y toma decisiones.</li>
-      <li><strong>Fomenta la colaboración y el trabajo en equipo</strong>. El alumnado trabaja en equipo, se apoya
-        mutuamente y comparte conocimientos.</li>
-      <li><strong>Fomenta la creatividad, la innovación y el pensamiento crítico</strong>. El alumnado tiene la
-        oportunidad de proponer soluciones y de experimentar con nuevas ideas.</li>
-      <li><strong>Fomenta la comunicación y la empatía</strong>. El alumnado aprende a comunicarse de forma efectiva y a
-        ponerse en el lugar de los demás.</li>
-      <li><strong>Fomenta la adaptación al cambio</strong>. El alumnado aprende a ser flexible y a adaptarse a las
-        circunstancias cambiantes.</li>
-      <li><strong>Fomenta la reflexión y la mejora continua</strong>. El alumnado reflexiona sobre su trabajo y busca
-        maneras de mejorar.</li>
-      <li><strong>Fomenta la motivación y el compromiso</strong>. El alumnado se siente motivado y comprometido con su
-        trabajo.</li>
-      <li><strong>Fomenta la responsabilidad y la toma de decisiones</strong>. El alumnado asume responsabilidades y
-        toma decisiones sobre su trabajo. También al tomar decisiones de equipo trabaja la resolución de conflictos.
-      </li>
-      <li><strong>Fomenta la empleabilidad</strong>. El alumnado adquiere habilidades que son valoradas por las
-        empresas.</li>
-    </ol>
-    <div style="page-break-after:always;"></div>
-    <h2 id="roles-en-scrum">Roles en Scrum </h2>
-    <p><strong>Product Owner</strong></p>
-    <p>Es la persona responsable de definir lo que se debe realizar a través de historias o requerimientos, priorizarlas
-      y asegurarse de que el equipo de desarrollo conoce los requisitos del proyecto. El Product Owner es la persona
-      responsable de maximizar el valor del trabajo del equipo de desarrollo.</p>
-    <p>Dentro del aula, el Product Owner es el profesorado.</p>
-    <p>El Product Owner debe estar disponible para el equipo de desarrollo para responder preguntas y proporcionar
-      orientación.</p>
-    <p>Debe intentar proporcionar valor, y no cantidad. No debe intentar que el equipo haga más tareas, sino que haga
-      las tareas que aporten más valor al proyecto. Definirá el <strong>producto mínimo viable</strong>, que es el
-      producto que aporta más valor con el mínimo esfuerzo.</p>
-    <img src="images/notlikethis.png" alt="Aportar valor" style="width:80%;margin: 10px;">
-    <p><strong>Scrum Master</strong></p>
-    <p>Es el/la responsable de asegurarse de que el equipo sigue los valores y prácticas de Scrum. El/la Scrum Master es
-      la persona responsable de ayudar al equipo a ser más efectivo y de eliminar los obstáculos que puedan estar
-      impidiendo que el equipo tenga éxito.</p>
-    <p>Se trata de un/a facilitador/a, no de un/a “coordinador/a” o “jefe/a del equipo”. Es un miembro igualitario del
-      equipo.</p>
-    <p>El Scrum Master puede ser inicialmente el/la docente, en equipos con poca autonomía. En equipos con mayor
-      autonomía, el/la Scrum Master puede ser un alumno o alumna, y que sea el propio equipo el que decida quién es el
-      Scrum Master.</p>
-    <p>Su principal objetivo debe ser que se cumpla el marco de trabajo Scrum: que se realicen las reuniones, que se
-      cumplan los tiempos marcados para las reuniones, que este actualizado el tablero del equipo en el que mostramos el
-      avance del producto, etc.</p>
-    <p><strong>Equipo de Desarrollo</strong></p>
-    <p>El equipo de desarrollo es el responsable de crear el producto. El equipo de desarrollo es un equipo
-      autoorganizado y multifuncional que trabaja en estrecha colaboración con el/la Product Owner (docentes) para crear
-      el producto. El equipo de desarrollo es responsable de determinar <strong>cómo</strong> se va a realizar el
-      trabajo y de llevarlo a cabo.</p>
-    <p>Lo ideal son equipos de 4-6 personas, pero esto dependerá de las características del grupo y del proyecto a
-      realizar.</p>
-    <div class="admonition question">
-      <p class="admonition-title">Reflexión</p>
-      <p>¿Es aconsejable cambiar los equipos o mantenerlos? No se debe cambiar al equipo durante un proyecto.
-        Normalmente es recomendable mantener el equipo estable durante todo el curso. Pero dependerá de cómo hayan
-        trabajado o si hace falta más cohesión de la clase, a veces es recomendable cambiar el equipo para el siguiente
-        proyecto.</p>
-    </div>
-    <div style="page-break-after:always;"></div>
-    <h2 id="planificación-y-ejecución-de-sprints">Planificación y Ejecución de Sprints </h2>
-    <img src="images/Scrum_process.png" alt="Figura" style="width:100%;">
-    <p>En Scrum lo primero será detallar el trabajo que se debe realizar. Este trabajo lo dividiremos en iteraciones
-      llamadas Sprints. En cada Sprint se planificará el trabajo que se debe realizar, se ejecutará el trabajo, y se
-      revisará el trabajo realizado. Y así repetiremos el proceso hasta que el proyecto esté terminado.</p>
-    <h4 id="product-backlog-lista-de-requerimientos">Product Backlog (Lista de requerimientos) </h4>
-    <p>El Product Backlog es una lista de todas los requerimientos que se deben realizar para completar el proyecto. El
-      Product Owner (docente) es el responsable de mantener el Product Backlog actualizado y de priorizar los
-      requerimientos en función de su importancia. Es una lista <strong>dinámica</strong>, y se va actualizando a lo
-      largo del proyecto.</p>
-    <p>Será el primer paso en nuestro proyecto. El/la docente deberá definir las <strong>historias de usuario</strong> o
-      requerimientos que se deben realizar para completar el proyecto.</p>
-    <p>Una historia de usuario es una descripción de una funcionalidad que se debe implementar en el proyecto. Se
-      escriben en un lenguaje sencillo y se centran en las necesidades. Por ejemplo, una historia de usuario podría ser:
-      “Como usuario, quiero poder iniciar sesión en la aplicación para acceder a mi perfil”.</p>
-    <div class="admonition note">
-      <p>“Como [perfil], [quiero] [para].”</p>
-    </div>
-    <p>El/la docente, ejerciendo su papel de Product Owner, es la persona que debe priorizarlas.</p>
-    <p>Este listado se irá actualizando a lo largo del proyecto, añadiendo nuevas historias, modificando las existentes,
-      o eliminando aquellas que ya no sean necesarias.</p>
-    <p>Cada historia de usuario puede tener:</p>
-    <ul>
-      <li>Nombre</li>
-      <li>Descripción: en forma de historia de usuario</li>
-      <li>Prioridad</li>
-      <li>Estimación de esfuerzo</li>
-      <li>Criterios de aceptación: ¿qué debe cumplir para que se considere <strong>terminado</strong>?.</li>
-    </ul>
-    <p>No es necesario escribir las historias de usuario con este formato. Se puede hacer una lista de requerimientos
-      cómo mejor se adapte a la forma de trabajar del equipo.</p>
-    <div class="admonition question">
-      <p class="admonition-title">Reflexión</p>
-      <p>En metodologías basadas en proyectos, ¿cúal es el primer paso que se debe realizar? ¿Por qué es
-        importante?¿Veis alguna similitud con el Product Backlog?</p>
-    </div>
-    <p><strong>Sprint</strong></p>
-    <p>El Sprint es el corazón Scrum. Un sprint es un periodo de tiempo en el cuál se deben lograr una entrega que
-      proporcione valor, utilizando todos los materiales y recursos que se ponen a disposición del equipo.</p>
-    <p>El Sprint tiene una <strong>duración fija</strong>, que suele ser de entre 1 y 4 semanas. Durante el Sprint, el
-      equipo trabaja para completar los requerimientos que se han seleccionado del Product Backlog.</p>
-    <div style="page-break-after:always;"></div>
-    <h2 id="reuniones-de-scrum">Reuniones de Scrum </h2>
-    <p>Scrum define las reuniones que se deben realizar, indicando, cuándo se deben realizar, quién debe asistir y qué
-      se debe hacer en cada reunión.</p>
-    <p><strong>Reunión de planificación o Sprint Planning</strong></p>
-    <p>A esta reunión que se realiza al principio de cada iteración o Sprint, debe asistir el equipo al completo: el
-      Product Owner, el Scrum Master y el equipo de desarrollo.<br>
-      ¿Qué vamos a acabar en este Sprint? Es el <strong>objetivo del Sprint</strong>. El Product Owner debe explicar qué
-      es lo que se espera que se entregue al final del Sprint, y priorizar lo que es más importante.</p>
-    <p>El equipo de desarrollo, junto con el Product Owner, selecciona los requerimientos del Product Backlog más
-      prioritarias que considera va a poder realizar en el Sprint, y se planifica cómo se van a realizar. Debe estar
-      claro que día va a finalizar el Sprint, y NO se debe modificar.</p>
-    <p>Para ver cuántas tareas se pueden realizar en un Sprint, hace falta saber cuántas personas hay en el equipo y
-      cuánto tiempo se va a trabajar en el Sprint, si a tiempo completo, al 20% o al 50%.</p>
-    <p>El Scrum Master debe asegurarse de que el equipo entiende lo que se espera de ellos y de que tienen todo lo que
-      necesitan para completar el trabajo. Debe asegurarse de que todo el equipo sale de la reunión sabiendo cuáles son
-      las tareas que se deben realizar en el Sprint. Se pueden asignar que tareas va a realizar cada uno en esta
-      reunión, pero no es necesario. Lo que si se debe hacer es estimar el esfuerzo que va a suponer cada tarea. Esto se
-      puede hacer con la técnica de <strong>Planning Poker</strong>, que veremos más adelante.</p>
-    <p>El Product Owner debe resolver preferiblemente en este momento las dudas que surjan sobre las tareas que se van a
-      realizar.</p>
-    <p>Para que la planificación del Sprint sea efectiva, es importante desglosar las tareas en tareas más pequeñas, que
-      se puedan realizar en un día, o máximo dos. También es importante saber si hay condicionantes, es decir, si para
-      empezar una tarea debe estar terminada otra. Esto lo puede indicar el Product Owner, o lo puede indicar el equipo
-      de desarrollo.</p>
-    <div class="admonition question">
-      <p class="admonition-title">Reflexión</p>
-      <p>Entonces, ¿no explicamos nada de los contenidos en clase?¿Cuándo debemos explicarlos?</p>
-    </div>
-    <h3 id="reunión-diaria-daily-scrum">Reunión diaria (Daily Scrum) </h3>
-    <p>Tiene los siguientes objetivos:</p>
-    <ul>
-      <li>Comentar el trabajo realizado desde la última reunión.</li>
-      <li>Definir el trabajo que se va a realizar hasta la siguiente sesión.</li>
-      <li>Identificar los posibles problemas que hayan surgido.</li>
-    </ul>
-    <p><strong>NO</strong> debe durar más del tiempo establecido, pero si puede durar menos. En Scrum dicen que son 15
-      min, pero en el aula dependerá del tiempo que tengamos de la sesión. Pensad que si son sesiones de 55 minutos, no
-      puede durar más de 10 minutos.<br>
-      Es responsabilidad del Scrum Master que no se pase de ese tiempo.</p>
-    <p>Se recomienda hacerla en el mismo lugar y a la misma hora.</p>
-    <p>En esta reunión <strong>cada miembro del equipo</strong> debe responder a tres preguntas:</p>
-    <ul>
-      <li>¿Qué he hecho desde la última reunión?</li>
-      <li>¿Qué me comprometo a hacer hasta la próxima reunión?</li>
-      <li>¿Hay algún problema que me impida avanzar?</li>
-    </ul>
-    <p>No se trata de debatir ni aclara requerimientos, que ya deberían estar aclarados.</p>
-    <p>El Scrum Master es el responsable de informar de las acciones que ha realizado, y el estado en el que se
-      encuentran, acerca de la resolución de los problemas que se han detectado en la reunión anterior.</p>
-    <p><strong>Ventajas</strong></p>
-    <ul>
-      <li>Mejora el conocimiento del estado del proyecto, y la comunicación entre los miembros del equipo.</li>
-      <li>Fomenta cierta competitividad, ya que se establece un compromiso con el resto del equipo, y nadie quiere decir
-        que no ha avanzado nada.</li>
-      <li>Ayuda a generar vínculos con los miembros del equipo.</li>
-      <li>Conseguimos que los miembros del equipo a los que les cuesta más hablar, se vayan soltando.</li>
-    </ul>
-    <h3 id="revisión-del-sprint-sprint-review">Revisión del Sprint (Sprint Review) </h3>
-    <p>Es el momento en el que el Product Owner valida el trabajo realizado por el equipo. Se debe mostrar el trabajo
-      realizado, y el Product Owner debe validar que cumple con los requisitos que se habían establecido. Para ellos se
-      ayudará de los <strong>criterios de aceptación</strong> que se habían establecido en el Product Backlog.</p>
-    <p>Deben venir todos a esta reunión, el Product Owner, el Scrum Master y el equipo de desarrollo. También pueden
-      venir invitados, como otros profesores, o incluso el alumnado de otros equipos. O personas interesadas, que vayan
-      a utilizar el producto.</p>
-    <p>El Product Owner puede proponer mejorar o rectificaciones. Esto va a modificar la lista de tareas pendientes o
-      nuevos requerimientos.</p>
-    <p>Las ventajas de esta reunión son:</p>
-    <ul>
-      <li>Permite al equipo mostrar su trabajo</li>
-      <li>El equipo obtiene feedback del Product Owner</li>
-      <li>El Product Owner detecta desviaciones entre lo que deseaba obtener y lo que le muestran</li>
-      <li>Permite prepara la replanificación del proyecto con la máxima información posible.</li>
-    </ul>
-    <p><strong>Lista de incremento de producto</strong></p>
-    <p>Se puede tener una lista con todas las tareas finalizadas. Es el Product Owner quien se encarga de mantenerla
-      actualizada, y decidir si se da por terminada una tarea o no.</p>
-    <h3 id="retrospectiva-del-sprint-sprint-retrospective">Retrospectiva del Sprint (Sprint Retrospective) </h3>
-    <p>El objetivo es autoevaluar la forma de trabajar. Se habla de la forma en la que el equipo ha actuado, de cómo ha
-      afrontado los problemas, y de cómo debería haberlos afrontado.</p>
-    <p>Se autoevalua a nivel individual y a nivel equipo. Y de esta autoevaluación debe salir un plan de mejora, a
-      aplicar en el siguiente Sprint. Con ello el alumnado adquiere un crecimiento personal y profesional, trabajando la
-      mejora continua, y siendo más consciente de sus virtudes y de sus puntos de mejora.</p>
-    <p>A esto a menudo se le denomina en el mundo laboral <strong>PDCA</strong> (Plan, Do, Check, Act). Son iteraciones
-      en las que se planifica, se ejecuta, se chequea, y se actúa en consecuencia.</p>
-    <p>Es altamente recomendable hacerlo después de cada Sprint, pero no es obligatorio cuando se hacen Sprint de una
-      semana y nos falta tiempo. Se puede hacer después de varios Sprints, pero no es recomendable hacerlo después de
-      más de 3 Sprints.</p>
+          </a></div>
+</div>
+<br>
+<p><a href="./UD1_Introduccion_Scrum.pdf">Descargar estos apuntes</a></p>
+<div style="page-break-after:always;"></div>
+<h2 id="introducción-a-scrum-1">Introducción a Scrum </h2>
+<h3 id="qué-es-scrum">¿Qué es Scrum? </h3>
+<p>Scrum es un marco que permite el <strong>trabajo colaborativo</strong> entre equipos. Al igual que un equipo de rugby (de donde proviene su nombre) cuando entrena para un gran partido, Scrum anima a los equipos a aprender a través de las experiencias, a <strong>autoorganizarse</strong> mientras aborda un problema y a <strong>reflexionar</strong> sobre sus victorias y derrotas para mejorar continuamente.</p>
+<p>Normalmente son los equipos de desarrollo de software los que utilizan con mayor frecuencia Scrum, pero sus principios y lecciones se pueden aplicar a todo tipo de proyectos en equipo.</p>
+<p>Scrum incluye un conjunto de reuniones, herramientas y funciones que, de forma coordinada, ayudan a los equipos a estructurar y gestionar su trabajo. El objetivo es <strong>obtener mejores resultados</strong> cada vez, dándole <strong>agilidad</strong> al equipo, que mejora con cada experiencia, y la <strong>adaptación al cambio</strong>, al ser un <strong>proceso iterativo</strong>.</p>
+<p>Scrum fue creado por Jeff Sutherland y Ken Schwaber a principios de los años 90. Ambos estaban trabajando en el desarrollo de software y se dieron cuenta de que los métodos tradicionales de gestión de proyectos no eran efectivos. Así que se unieron para crear un marco de trabajo que permitiera a los equipos ser más ágiles y adaptarse a los cambios.</p>
+<img src="images/rugby.png" alt="Scrum en rugby" width="90%"> 
+<br><br>
+<p>El gran éxito es en parte por su <strong>sencillez</strong>, ya que el marco de trabajo Scrum nos da unas pequeñas pautas a seguir. Y cada uno puede llevarlas a cabo de una forma diferente y adaptarla a sus necesidades.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexión</p>
+<p>Al tratarse de trabajo en equipo, ¿consideráis que debemos dedicar tiempo a ver las ventajas de trabajar en equipo? ¿qué hace falta para que el alumnado trabaje bien en equipo?</p>
+</div>
+<h3 id="principios-ágiles">Principios ágiles </h3>
+<p>Hoy en día definimos la filosofía <strong>Agile</strong> como la capacidad de crear y responder al cambio de forma rápida, es una forma de llevar a cabo un proyecto de forma exitosa en un entorno incierto y en constantes cambios (Agile Alliance, 2015).</p>
+<p>Los principios ágiles son un conjunto de valores y principios que se utilizan para guiar el desarrollo de software.</p>
+<p>Los principios ágiles se basan en el <strong>Manifiesto Ágil</strong>, que fue escrito por un grupo de desarrolladores de software en 2001. El manifiesto ágil establece <strong>cuatro valores</strong> fundamentales y <strong>doce principios</strong> que se utilizan para guiar el desarrollo de software.</p>
+<div class="admonition info">
+<p class="admonition-title">Valores</p>
+<p>Los cuatro valores fundamentales del manifiesto ágil son:</p>
+<ul>
+<li>
+<p><strong>Individuos e interacciones sobre procesos y herramientas</strong>: Los equipos ágiles valoran más a las <strong>personas y las relaciones</strong> entre ellas que a los procesos y las herramientas. Esto significa que los equipos ágiles se centran en la <strong>comunicación y la colaboración</strong> entre los miembros del equipo, en lugar de en los procesos y las herramientas que utilizan.</p>
+</li>
+<li>
+<p><strong>Software funcionando sobre documentación extensiva</strong>: Los equipos ágiles valoran más el software que funciona que la documentación extensiva. Esto significa que los equipos ágiles se centran en crear software que funcione y que sea útil para los usuarios, en lugar de en crear una gran cantidad de documentación.</p>
+</li>
+<li>
+<p><strong>Colaboración con el cliente sobre negociación contractual</strong>: Los equipos ágiles valoran más la colaboración con el cliente que la negociación contractual. Esto significa que los equipos ágiles trabajan en <strong>estrecha colaboración</strong> con los clientes para entender sus necesidades y crear software que satisfaga esas necesidades, en lugar de centrarse en la negociación de contratos.</p>
+</li>
+<li>
+<p><strong>Responder al cambio sobre seguir un plan</strong>: Los equipos ágiles valoran más la capacidad de responder al cambio que seguir un plan. Esto significa que los equipos ágiles se centran en <strong>ser flexibles y adaptarse a los cambios</strong> en lugar de seguir un plan rígido.</p>
+</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Reflexión</p>
+<p>¿Qué valores creéis que son más importantes para el aula?¿Por qué?</p>
+</div>
+<p>De estos valores surgen los <strong>doce principios</strong> del manifiesto ágil.</p>
+<p>Para realizarlos de forma más genérica y no aplicado solo al desarrollo de software, sino al aula, los principios ágiles se pueden resumir en los siguientes puntos:</p>
+<ol>
+<li>La prioridad es satisfacer al cliente (¿profesorado?) a través de la <strong>entrega temprana y continua con valor</strong>.</li>
+<li>Aceptamos que los <strong>requisitos cambien</strong>.</li>
+<li><strong>Entregamos frecuentemente</strong>, cuanto más frecuente mejor. Más retroalimentación y más constante.</li>
+<li>Los responsables de negocio (profesorado) y los desarrolladores (alumnado) trabajamos juntos <em><strong>de forma cotidiana durante todo el proyecto</strong></em>. Todas las personas implicadas tiene los <strong>mismos objetivos</strong> e interactúan dia a dia.</li>
+<li>Los proyectos se desarrollan en torno a <em><strong>individuos motivados</strong></em>. Hay que darles el entorno y el <strong>apoyo</strong> que necesitan, y <strong>confiarles la ejecución del trabajo</strong>.</li>
+<li>El método más eficiente y efectivo de <strong>comunicar</strong> la información es <strong>cara a cara</strong>, o por lo menos síncrona.</li>
+<li>El <strong>producto que funciona</strong> es la medida principal del progreso. Esto hace referencia a que el profesorado conozca el trabajo realizado y funcionando (o que se adapte a lo esperado).</li>
+<li>Los procesos ágiles promueven el desarrollo sostenible. Debemos ser capaces de mantener un <strong>ritmo constante</strong> que pueda ser seguido por todos.</li>
+<li>La atención continua a la <strong>excelencia técnica</strong> y al <strong>buen diseño</strong> mejora la agilidad. Este se refiere a cuidar los aspectos a la hora de realizar el trabajo.</li>
+<li>La <strong>simplicidad</strong>, o el arte de maximizar la cantidad de trabajo no realizado, es esencial. Se refiere a actuar de la forma más sencilla posible. Acciones que realmente aporten valor. No realizar trabajo innecesario.</li>
+<li>Las mejores soluciones emergen de <strong>equipos autoorganizados</strong>. Se les da la <strong>libertad</strong> para que tomen decisiones, y esto les hace estar más comprometidos y consiguen mejores resultados.</li>
+<li>A <strong>intervalos regulares</strong> el equipo <strong>reflexiona</strong> sobre cómo ser más efectivo para a continuación ajustar y perfeccionar su comportamiento en consecuencia. hace referencia a la idea de la mejora continua y aprender de los errores.</li>
+</ol>
+<h3 id="pilares-de-scrum">Pilares de Scrum </h3>
+<p>Scrum se basa en tres pilares fundamentales que son la transparencia, la inspección y la adaptación.</p>
+<ul>
+<li><strong>Transparencia</strong>: Todos los aspectos del proceso deben ser visibles para todos los miembros del equipo. Esto significa que el equipo debe ser honesto y abierto acerca de su trabajo y de los problemas que puedan surgir.</li>
+<li><strong>Inspección</strong>: El equipo debe inspeccionar regularmente su trabajo para identificar posibles problemas y oportunidades de mejora.</li>
+<li><strong>Adaptación</strong>: El equipo debe adaptarse a los cambios en su entorno y en su trabajo. Esto significa que el equipo debe ser flexible y estar dispuesto a cambiar su forma de trabajar si es necesario.</li>
+</ul>
+<div style="page-break-after:always;"></div>
+<h2 id="roles-en-scrum">Roles en Scrum </h2>
+<p><strong>Product Owner</strong></p>
+<p>Es la persona responsable de <strong>definir lo que se debe realizar</strong> a través de historias o requerimientos, <strong>priorizarlas</strong> y asegurarse de que el equipo de desarrollo conoce los requisitos del proyecto. El Product Owner es la persona responsable de maximizar el valor del trabajo del equipo de desarrollo.</p>
+<p>Dentro del aula, el Product Owner es el profesorado.</p>
+<p>El Product Owner debe estar disponible para el equipo de desarrollo para responder preguntas y proporcionar orientación.</p>
+<p>Debe intentar proporcionar <strong>valor</strong>, y no cantidad. No debe intentar que el equipo haga más tareas, sino que haga las tareas que aporten más valor al proyecto.</p>
+<p>En Scrum se habla del <strong>producto mínimo viable</strong>, que es el producto que aporta más valor con el mínimo esfuerzo.</p>
+<img src="images/notlikethis.png" alt="Aportar valor" style="width:80%;margin: 10px;"> 
+<br><br>
+<p><strong>Scrum Master</strong></p>
+<p>Es el/la responsable de <strong>asegurarse de que el equipo sigue los valores y prácticas de Scrum</strong>. El/la Scrum Master es la persona responsable de ayudar al equipo a ser más efectivo y de eliminar los obstáculos que puedan estar impidiendo que el equipo tenga éxito.</p>
+<p>Se trata de un/a facilitador/a, no de un/a “coordinador/a” o “jefe/a del equipo”. Es un miembro igualitario del equipo.</p>
+<p>El Scrum Master puede ser inicialmente el/la docente, en equipos con poca autonomía. En equipos con mayor autonomía, el/la Scrum Master puede ser un alumno o alumna, y que sea el propio equipo el que decida quién es el Scrum Master.</p>
+<p>Su principal objetivo debe ser que se cumpla el marco de trabajo Scrum: que se realicen las reuniones, que se cumplan los tiempos marcados para las reuniones, que este actualizado el tablero del equipo en el que mostramos el avance del producto, etc.</p>
+<p><strong>Equipo de Desarrollo</strong></p>
+<p>El equipo de desarrollo es el responsable de crear el producto. El equipo de desarrollo es un equipo autoorganizado y multifuncional que trabaja en estrecha colaboración con el/la Product Owner (profesorado) para crear el producto. El equipo de desarrollo es responsable de determinar <strong>cómo</strong> se va a realizar el trabajo y de llevarlo a cabo.</p>
+<p>Lo ideal son equipos de <strong>4-6 personas</strong>, pero esto dependerá de las características del grupo y del proyecto a realizar.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexión</p>
+<p>¿Es aconsejable cambiar los equipos o mantenerlos?</p>
+</div>
+<p>No se debe cambiar al equipo durante un proyecto. Normalmente es recomendable mantener el equipo estable durante todo el curso. Pero dependerá de cómo hayan trabajado o si hace falta más cohesión de la clase, a veces es recomendable cambiar el equipo para el siguiente proyecto.</p>
+<div style="page-break-after:always;"></div>
+<h2 id="planificación-y-ejecución-de-sprints">Planificación y Ejecución de Sprints </h2>
+<img src="images/Scrum_process.png" alt="Figura" style="width:100%;"> 
+<p>En Scrum lo primero será detallar el trabajo que se debe realizar. Este trabajo lo dividiremos en iteraciones llamadas <strong>Sprints</strong>. En cada Sprint se planificará el trabajo que se debe realizar, se ejecutará el trabajo, y se revisará el trabajo realizado. Y así repetiremos el proceso hasta que el proyecto esté terminado.</p>
+<h4 id="product-backlog-lista-de-requerimientos">Product Backlog (Lista de requerimientos) </h4>
+<p>El Product Backlog es una lista de todas los requerimientos que se deben realizar para completar el proyecto. El Product Owner (docente) es la persona responsable de mantener el Product Backlog actualizado y de priorizar los requerimientos. Es una lista <strong>dinámica</strong>, y se va actualizando a lo largo del proyecto.</p>
+<p>Será el primer paso en nuestro proyecto. El/la docente deberá definir las <strong>historias de usuario</strong> o requerimientos que se deben realizar para completar el proyecto.</p>
+<p>Una historia de usuario es una descripción de una funcionalidad que se debe implementar en el proyecto. Se escriben en un lenguaje sencillo y se centran en las necesidades. Por ejemplo, una historia de usuario podría ser: “Como usuario, quiero poder iniciar sesión en la aplicación para acceder a mi perfil”.</p>
+<div class="admonition note">
+<p>“Como [perfil], [quiero] [para].”</p>
+</div>
+<p>El/la docente, ejerciendo su papel de Product Owner, es la persona que debe priorizarlas.</p>
+<p>Este listado se irá actualizando a lo largo del proyecto, añadiendo nuevas historias, modificando las existentes, o eliminando aquellas que ya no sean necesarias.</p>
+<p>Cada historia de usuario puede tener:</p>
+<ul>
+<li>Nombre</li>
+<li>Descripción: en forma de historia de usuario</li>
+<li>Prioridad</li>
+<li>Estimación de esfuerzo</li>
+<li>Criterios de aceptación</li>
+</ul>
+<p>No es necesario escribir las historias de usuario con este formato. Se puede hacer una lista de requerimientos cómo mejor se adapte a la forma de trabajar del equipo.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexión</p>
+<p>En metodologías basadas en proyectos o retos, ¿cuál es el primer paso que se debe realizar? ¿Por qué es importante?¿Veis alguna similitud con el Product Backlog?</p>
+</div>
+<p><strong>Sprint</strong></p>
+<p>El Sprint es el corazón Scrum. Un Sprint es un periodo de tiempo en el cuál se deben lograr una entrega que proporcione valor, utilizando todos los materiales y recursos que se ponen a disposición del equipo.</p>
+<p>El Sprint tiene una <strong>duración fija</strong>, que suele ser de entre 1 y 4 semanas. Durante el Sprint, el equipo trabaja para completar los requerimientos que se han seleccionado del Product Backlog.</p>
+<div style="page-break-after:always;"></div>
+<h2 id="reuniones-de-scrum">Reuniones de Scrum </h2>
+<p>Scrum define las reuniones que se deben realizar, indicando, cuándo se deben realizar, quién debe asistir y qué se debe hacer en cada reunión.</p>
+<p><strong>Reunión de planificación o Sprint Planning</strong></p>
+<p>A esta reunión que se realiza al principio de cada iteración o Sprint, debe asistir el equipo al completo: el Product Owner, el Scrum Master y el equipo de desarrollo.</p>
+<p>¿Qué vamos a acabar en este Sprint? Es el <strong>objetivo del Sprint</strong>. El Product Owner debe explicar qué es lo que se espera que se entregue al final del Sprint, y priorizar lo que es más importante.</p>
+<p>El equipo de desarrollo, junto con el Product Owner, selecciona los requerimientos del Product Backlog más prioritarias que considera va a poder realizar en el Sprint, y se planifica cómo se van a realizar. Debe estar claro que día va a finalizar el Sprint, y NO se debe modificar.</p>
+<p>Para ver cuántas tareas se pueden realizar en un Sprint, hace falta saber cuántas personas hay en el equipo y cuánto tiempo se va a trabajar en el Sprint, si a tiempo completo, al 20% o al 50%.</p>
+<p>El Scrum Master debe asegurarse de que el equipo entiende lo que se espera de ellos y de que tienen todo lo que necesitan para completar el trabajo. Debe asegurarse de que todo el equipo sale de la reunión sabiendo cuáles son las tareas que se deben realizar en el Sprint. Se pueden asignar que tareas va a realizar cada uno en esta reunión, pero no es necesario. Lo que si se debe hacer es estimar el esfuerzo que va a suponer cada tarea. Esto se puede hacer con la técnica de <strong>Planning Poker</strong>, que veremos más adelante.</p>
+<p>El Product Owner debe resolver preferiblemente en este momento las dudas que surjan sobre las tareas que se van a realizar.</p>
+<p>Para que la planificación del Sprint sea efectiva, es importante desglosar las tareas en tareas más pequeñas, que se puedan realizar en un día o sesión, o máximo dos. También es importante saber si hay condicionantes, es decir, si para empezar una tarea debe estar terminada otra. Esto lo puede indicar el Product Owner, o lo puede indicar el equipo de desarrollo.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexión</p>
+<p>Entonces, ¿no explicamos nada de los contenidos en clase?¿Cuándo debemos explicarlos?</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Aviso Los días que sepamos que vamos a explicar contenido o que sepamos que no van a poder avanzar por cualquier otro motivo, debemos planificarlo en la reunión de planificación.</p>
+</div>
+<h3 id="reunión-diaria-daily-scrum">Reunión diaria (Daily Scrum) </h3>
+<p>Tiene los siguientes objetivos:</p>
+<ul>
+<li>Comentar el trabajo realizado desde la última reunión.</li>
+<li>Definir el trabajo que se va a realizar hasta la siguiente sesión.</li>
+<li>Identificar los posibles problemas que hayan surgido.</li>
+</ul>
+<p><strong>NO</strong> debe durar más del tiempo establecido, pero si puede durar menos. En Scrum dicen que son 15 min, pero en el aula dependerá del tiempo que tengamos de la sesión. Pensad que si son sesiones de 55 minutos, no puede durar más de 10 minutos.<br>
+Es responsabilidad del Scrum Master que no se pase de ese tiempo.</p>
+<p>Se recomienda hacerla en el mismo lugar y a la misma hora.</p>
+<p>En esta reunión <strong>cada miembro del equipo</strong> debe responder a tres preguntas:</p>
+<ul>
+<li>¿Qué he hecho desde la última reunión?</li>
+<li>¿Qué me comprometo a hacer hasta la próxima reunión?</li>
+<li>¿Hay algún problema que me impida avanzar?</li>
+</ul>
+<p>No se trata de debatir ni aclara requerimientos, que ya deberían estar aclarados.</p>
+<p>Sobre los problemas o impedimentos detectado, el Scrum Master es el responsable de informar de las acciones que ha realizado, y el estado en el que se encuentran. Si no se ha podido solucionar, se debe informar al Product Owner, para que este pueda tomar las decisiones oportunas.</p>
+<p><strong>Ventajas</strong></p>
+<ul>
+<li>Mejora el conocimiento del estado del proyecto, y la comunicación entre los miembros del equipo.</li>
+<li>Fomenta cierta competitividad, ya que se establece un compromiso con el resto del equipo, y nadie quiere decir que no ha avanzado nada.</li>
+<li>Ayuda a generar vínculos con los miembros del equipo.</li>
+<li>Conseguimos que los miembros del equipo a los que les cuesta más hablar se vayan soltando.</li>
+</ul>
+<h3 id="revisión-del-sprint-sprint-review">Revisión del Sprint (Sprint Review) </h3>
+<p>Es el momento en el que el Product Owner valida el trabajo realizado por el equipo. Se debe mostrar el trabajo realizado, y el Product Owner debe validar que cumple con los requisitos que se habían establecido. Para ellos se ayudará de los <strong>criterios de aceptación</strong> que se habían establecido en el Product Backlog.</p>
+<p>Deben venir todos/as a esta reunión, el Product Owner, el Scrum Master y el equipo de desarrollo. También pueden venir invitados, como otros docentes, o incluso el alumnado de otros equipos. O personas interesadas, que vayan a utilizar el producto.</p>
+<p>El Product Owner puede proponer mejoras o realizar rectificaciones. Esto va a modificar la lista de tareas pendientes o nuevos requerimientos. Pero nunca se debe modificar las tareas a realizar durante Sprint actual.</p>
+<p>Las ventajas de esta reunión son:</p>
+<ul>
+<li>Permite al equipo mostrar su trabajo</li>
+<li>El equipo obtiene retroalimentación del Product Owner</li>
+<li>El Product Owner detecta desviaciones entre lo que deseaba obtener y lo que le muestran</li>
+<li>Permite prepara la replanificación del proyecto con la máxima información posible.</li>
+</ul>
+<p><strong>Lista de incremento de producto</strong></p>
+<p>Se puede tener una lista con todas las tareas finalizadas. Es el Product Owner quien se encarga de mantenerla actualizada, y decidir si se da por terminada una tarea o no.</p>
+<h3 id="retrospectiva-del-sprint-sprint-retrospective">Retrospectiva del Sprint (Sprint Retrospective) </h3>
+<p>El objetivo es autoevaluar la forma de trabajar. Se habla de la forma en la que el equipo ha actuado, de cómo ha afrontado los problemas, y de cómo debería haberlos afrontado.</p>
+<p>De esta autoevaluación debe salir un plan de mejora, a aplicar en el siguiente Sprint. Con ello el alumnado adquiere un crecimiento personal y profesional, trabajando la mejora continua, y siendo más consciente de sus virtudes y de sus puntos de mejora.</p>
+<p>A esto a menudo se le denomina en el mundo laboral <strong>PDCA</strong> (Plan, Do, Check, Act). Son iteraciones en las que se planifica, se ejecuta, se chequea, y se actúa en consecuencia.</p>
+<p>Es altamente recomendable hacerlo después de cada Sprint, pero no es obligatorio cuando se hacen Sprint de una semana y nos falta tiempo. Se puede hacer después de varios Sprints, pero no es recomendable hacerlo después de más de 3 Sprints.</p>
+<h2 id="para-qué-emplear-scrum-en-el-aula">¿Para qué emplear Scrum en el Aula? </h2>
+<p>Scrum, por tanto, se basa en realizar iteraciones cortas en las que se realizan entregas, llamadas <strong>Sprints</strong>, en las que se planifica, se ejecuta con equipos autoorganizados y se revisa el trabajo realizado buscando la mejora continua.</p>
+<ol>
+<li><strong>Fomenta la autonomía y la responsabilidad</strong>. El alumnado se organiza y planifica su trabajo, asume responsabilidades y toma decisiones.</li>
+<li><strong>Fomenta la colaboración y el trabajo en equipo</strong>. El alumnado trabaja en equipo, se apoya mutuamente y comparte conocimientos.</li>
+<li><strong>Fomenta la creatividad, la innovación y el pensamiento crítico</strong>. El alumnado tiene la oportunidad de proponer soluciones y de experimentar con nuevas ideas.</li>
+<li><strong>Fomenta la comunicación y la empatía</strong>. El alumnado aprende a comunicarse de forma efectiva y a ponerse en el lugar de los demás.</li>
+<li><strong>Fomenta la adaptación al cambio</strong>. El alumnado aprende a ser flexible y a adaptarse a las circunstancias cambiantes.</li>
+<li><strong>Fomenta la reflexión y la mejora continua</strong>. El alumnado reflexiona sobre su trabajo y busca maneras de mejorar.</li>
+<li><strong>Fomenta la motivación y el compromiso</strong>. El alumnado se siente motivado y comprometido con su trabajo.</li>
+<li><strong>Fomenta la responsabilidad y la toma de decisiones</strong>. El alumnado asume responsabilidades y toma decisiones sobre su trabajo. También al tomar decisiones de equipo trabaja la resolución de conflictos.</li>
+<li><strong>Fomenta la empleabilidad</strong>. El alumnado adquiere habilidades que son valoradas por las empresas.</li>
+</ol>
 
-  </div>
-
-
-
-
-
-
-
-
-
-</body>
-
-</html>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
